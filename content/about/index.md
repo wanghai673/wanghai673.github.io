@@ -4,7 +4,6 @@ date: 2025-08-17
 draft: false
 # PaperMod 常用参数（可选）
 showtoc: false
-comments: false
 # 如果想要封面图
 cover:
   image: avater.jpg
