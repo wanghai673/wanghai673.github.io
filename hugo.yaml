@@ -43,7 +43,8 @@ params:
   defaultTheme: auto # 默认主题：自动、深色或浅色
   disableThemeToggle: false # 是否禁用主题切换按钮
 
-  ShowReadingTime: true # 是否显示阅读时间
+  hideAuthor: true
+  ShowReadingTime: false # 是否显示阅读时间
   ShowShareButtons: false # 是否显示分享按钮
   ShowPostNavLinks: true # 是否显示文章导航链接
   ShowBreadCrumbs: true # 是否显示面包屑导航
