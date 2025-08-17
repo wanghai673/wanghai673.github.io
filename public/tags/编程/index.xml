@@ -18,7 +18,7 @@
       <link>http://localhost:1313/posts/first-blog/</link>
       <pubDate>Sun, 17 Aug 2025 14:34:53 +0800</pubDate>
       <guid>http://localhost:1313/posts/first-blog/</guid>
-      <description>&lt;h3 id=&#34;hello-world&#34;&gt;Hello World~&lt;/h3&gt;</description>
+      <description>&lt;h3 id=&#34;hello-world&#34;&gt;Hello World&lt;/h3&gt;</description>
     </item>
   </channel>
 </rss>

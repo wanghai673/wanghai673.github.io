@@ -1,3 +1,76 @@
-{{- /* Footer custom content area start */ -}}
-{{- /*     Insert any custom code web-analytics, resources, etc. here */ -}}
-{{- /* Footer custom content area end */ -}}
+<script>
+(function () {
+  // ---- 读取 PaperMod 当前主题 ----
+  function currentTheme() {
+    const ls = localStorage.getItem("pref-theme"); // PaperMod 存储的键
+    if (ls === "dark" || ls === "light") return ls;
+    if (document.documentElement.classList.contains("dark")) return "dark";
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+
+  // ---- 将主题发送到所有 giscus iframe ----
+  function pushThemeToGiscus(theme) {
+    const frames = document.querySelectorAll("iframe.giscus-frame");
+    if (!frames.length) return false;
+    frames.forEach((iframe) => {
+      try {
+        iframe.contentWindow.postMessage(
+          { giscus: { setConfig: { theme: theme === "dark" ? "dark" : "light" } } },
+          "https://giscus.app"
+        );
+      } catch (_) {}
+    });
+    return true;
+  }
+
+  // ---- 防抖，避免频繁触发 ----
+  function debounce(fn, wait) {
+    let t;
+    return function () {
+      clearTimeout(t);
+      t = setTimeout(fn, wait);
+    }
+  }
+
+  const sync = debounce(() => pushThemeToGiscus(currentTheme()), 80);
+
+  // ---- 1) 首次加载：等待 iframe 出现（MutationObserver） ----
+  const mo = new MutationObserver(() => sync());
+  mo.observe(document.body, { childList: true, subtree: true });
+
+  // ---- 2) 兜底轮询：有些站点/网络下 iframe 来得更晚 ----
+  (function pollForIframe(attempts = 40) {
+    if (pushThemeToGiscus(currentTheme())) return; // 已成功推送
+    if (attempts <= 0) return;
+    setTimeout(() => pollForIframe(attempts - 1), 150); // 最长约 6 秒兜底
+  })();
+
+  // ---- 3) PaperMod 的主题按钮 ----
+  const btn = document.getElementById("theme-toggle");
+  if (btn) btn.addEventListener("click", () => sync());
+
+  // ---- 4) 跟随系统主题变化 ----
+  try {
+    const mql = window.matchMedia("(prefers-color-scheme: dark)");
+    const onChange = () => sync();
+    mql.addEventListener ? mql.addEventListener("change", onChange) : mql.addListener(onChange);
+  } catch (_) {}
+
+  // ---- 5) 返回/前进、页面从缓存恢复（bfcache）、标签可见性改变 ----
+  window.addEventListener("pageshow", () => sync());
+  window.addEventListener("popstate", () => sync());
+  window.addEventListener("visibilitychange", () => { if (!document.hidden) sync(); });
+  window.addEventListener("hashchange", () => sync());
+
+  // ---- 6) 兼容常见的 PJAX/Turbo/Ajax 导航事件（有则触发，无则无害）----
+  document.addEventListener("pjax:end", () => sync());
+  document.addEventListener("turbo:load", () => sync());
+  document.addEventListener("astro:page-load", () => sync());
+
+  // 可选：监听 giscus 准备就绪的消息（新版本常见）
+  window.addEventListener("message", (e) => {
+    if (e.origin !== "https://giscus.app") return;
+    if (e.data && e.data.giscus && e.data.giscus.ready) sync();
+  });
+})();
+</script>

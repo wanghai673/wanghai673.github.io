@@ -21,6 +21,16 @@ minify:
   minifyOutput: true # 是否压缩输出的 HTML 文件
 
 params:
+  giscus:
+    repo: "wanghai673/wanghai673.github.io"
+    repoID: "R_kgDOPfU1mg"
+    category: "Announcements"
+    categoryID: "DIC_kwDOPfU1ms4CuRXc"
+    mapping: "pathname"
+    reactionsEnabled: "1"
+    emitMetadata: "0"
+    theme: "preferred_color_scheme"
+    lang: "zh-CN"
   mainSections: ["posts"]
   env: production # 环境变量，用于启用 Google Analytics、OpenGraph 等功能
   title: Wanghai673 # 网站标题
@@ -34,7 +44,7 @@ params:
   disableThemeToggle: false # 是否禁用主题切换按钮
 
   ShowReadingTime: true # 是否显示阅读时间
-  ShowShareButtons: true # 是否显示分享按钮
+  ShowShareButtons: false # 是否显示分享按钮
   ShowPostNavLinks: true # 是否显示文章导航链接
   ShowBreadCrumbs: true # 是否显示面包屑导航
   ShowCodeCopyButtons: true # 是否显示代码复制按钮
@@ -43,7 +53,7 @@ params:
   UseHugoToc: true # 是否使用 Hugo 内置的目录功能
   disableSpecial1stPost: false # 是否禁用特殊样式的第一篇文章
   disableScrollToTop: false # 是否禁用返回顶部按钮
-  comments: false # 是否启用评论功能
+  comments: true # 是否启用评论功能
   hidemeta: false # 是否隐藏元信息（作者、日期等）
   hideSummary: false # 是否隐藏文章摘要
   showtoc: false # 是否显示目录
