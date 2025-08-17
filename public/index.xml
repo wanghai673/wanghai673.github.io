@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Wanghai673</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Wanghai673</description>
+    <image>
+      <title>Wanghai673</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.148.2</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 17 Aug 2025 14:38:28 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My Second Post</title>
+      <link>http://localhost:1313/posts/my-second-post/</link>
+      <pubDate>Sun, 17 Aug 2025 14:38:28 +0800</pubDate>
+      <guid>http://localhost:1313/posts/my-second-post/</guid>
+      <description>&lt;p&gt;666&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>My First Post</title>
+      <link>http://localhost:1313/posts/myfirst/</link>
+      <pubDate>Sun, 17 Aug 2025 14:34:53 +0800</pubDate>
+      <guid>http://localhost:1313/posts/myfirst/</guid>
+      <description>&lt;h1 id=&#34;hello-world&#34;&gt;Hello World!&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;hello world!&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;12133&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>About me</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Sun, 17 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;p&gt;你好，我是 &lt;strong&gt;wanghai673&lt;/strong&gt;，一名正在攻读 &lt;strong&gt;计算机科学与技术&lt;/strong&gt; 的研究生（研0），本科毕业于东华大学，目前就读于华东师范大学。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;💻 编程语言：C++、Python、Java&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;🔍 研究兴趣：深度学习、大语言模型、智能体&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;🏆 竞赛经历：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ICPC亚洲区域赛 &lt;strong&gt;金奖（第49届）&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;蓝桥杯全国总决赛 &lt;strong&gt;一等奖（全国第6名）&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;百度之星全国总决赛 &lt;strong&gt;金奖&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;多次 ICPC/CCPC &lt;strong&gt;银奖&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;上海市大学生程序设计竞赛 &lt;strong&gt;一等奖&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我正在不断学习和提升自己，期待将所学应用于实际问题。如果有相关的 &lt;strong&gt;实习机会&lt;/strong&gt; 或者 &lt;strong&gt;研究合作&lt;/strong&gt;，非常欢迎联系我。&lt;/p&gt;
+&lt;p&gt;📫 联系方式：&lt;a href=&#34;wechat.jpg&#34;&gt;微信&lt;/a&gt;、&lt;a href=&#34;https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;amp;email=1154103986@qq.com&#34;&gt;邮件&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,159 @@
+baseURL: https://wanghai673.github.io/ # 网站的基础 URL
+# 在最顶层（和 baseURL 同级）加上
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # ← 这行必须有，否则搜索没数据
+
+title: Wanghai673 # 网站标题
+pagination:
+  pagerSize: 5 # 每页显示的文章数量
+theme: PaperMod # 使用的主题名称
+
+enableRobotsTXT: true # 是否生成 robots.txt 文件
+buildDrafts: false # 是否构建草稿文章
+buildFuture: false # 是否构建未来日期的文章
+buildExpired: false # 是否构建过期文章
+
+minify:
+  disableXML: true # 是否禁用 XML 文件的压缩
+  minifyOutput: true # 是否压缩输出的 HTML 文件
+
+params:
+  mainSections: ["posts"]
+  env: production # 环境变量，用于启用 Google Analytics、OpenGraph 等功能
+  title: Wanghai673 # 网站标题
+  description: "ExampleSite description" # 网站描述
+  keywords: [Blog, Portfolio, PaperMod] # 网站关键词
+  author: Wanghai673 # 作者名称
+  # author: ["Me", "You"] # 多个作者
+  images: ["<link or path of image for opengraph, twitter-cards>"] # 用于 OpenGraph 和 Twitter 卡片的图片
+  DateFormat: "January 2, 2006" # 日期格式
+  defaultTheme: auto # 默认主题：自动、深色或浅色
+  disableThemeToggle: false # 是否禁用主题切换按钮
+
+  ShowReadingTime: true # 是否显示阅读时间
+  ShowShareButtons: true # 是否显示分享按钮
+  ShowPostNavLinks: true # 是否显示文章导航链接
+  ShowBreadCrumbs: true # 是否显示面包屑导航
+  ShowCodeCopyButtons: true # 是否显示代码复制按钮
+  ShowWordCount: true # 是否显示字数统计
+  ShowRssButtonInSectionTermList: true # 是否在分类页面显示 RSS 按钮
+  UseHugoToc: true # 是否使用 Hugo 内置的目录功能
+  disableSpecial1stPost: false # 是否禁用特殊样式的第一篇文章
+  disableScrollToTop: false # 是否禁用返回顶部按钮
+  comments: false # 是否启用评论功能
+  hidemeta: false # 是否隐藏元信息（作者、日期等）
+  hideSummary: false # 是否隐藏文章摘要
+  showtoc: false # 是否显示目录
+  tocopen: false # 目录是否默认展开
+
+  assets:
+    # disableHLJS: true # 是否禁用 highlight.js
+    # disableFingerprinting: true # 是否禁用资源指纹
+    favicon: "/images/dog.svg" # 网站图标
+    favicon16x16: "/images/dog.svg" # 16x16 图标
+    favicon32x32: "/images/dog.svg" # 32x32 图标
+    apple_touch_icon: "/images/dog.svg" # Apple Touch 图标
+    safari_pinned_tab: "/images/dog.svg" # Safari 固定标签图标
+
+  label:
+    text: "Wanghai673" # 标签文本
+    icon: /apple-touch-icon.png # 标签图标路径
+    iconHeight: 35 # 图标高度
+
+  # profile-mode
+  profileMode:
+    enabled: false # 是否启用个人资料模式
+    title: ExampleSite # 个人资料标题
+    subtitle: "This is subtitle" # 个人资料副标题
+    imageUrl: "<img location>" # 个人资料图片路径
+    imageWidth: 120 # 图片宽度
+    imageHeight: 120 # 图片高度
+    imageTitle: my image # 图片标题
+    buttons: # 按钮配置
+      - name: Posts
+        url: posts
+      - name: Tags
+        url: tags
+
+  # home-info mode
+  homeInfoParams:
+    Title: "你好呀👋"
+    Content: |
+      欢迎来到我的主页 ✨  
+      这里有我的文章与想法分享。  
+      想更了解我？请前往 [About Me](/about/) 🙋
+
+  socialIcons:
+    - name: wechat # 社交图标名称
+      url: "/about/wechat.jpg" # 社交链接
+    - name: github
+      url: "https://github.com/wanghai673"
+    - name: bilibili
+      url: "https://space.bilibili.com/1344906261"
+    - name: x
+      url: "https://x.com/leo82713015"
+
+  analytics:
+    google:
+      SiteVerificationTag: "XYZabc" # Google 验证标签
+    bing:
+      SiteVerificationTag: "XYZabc" # Bing 验证标签
+    yandex:
+      SiteVerificationTag: "XYZabc" # Yandex 验证标签
+
+  cover:
+    hidden: true # 是否隐藏封面（仅在结构化数据中显示）
+    hiddenInList: true # 是否在列表页面和首页隐藏封面
+    hiddenInSingle: false # 是否在单篇文章页面隐藏封面
+
+  editPost:
+    URL: "https://github.com/<path_to_repo>/content" # 编辑文章的链接
+    Text: "Suggest Changes" # 编辑按钮文本
+    appendFilePath: true # 是否在编辑链接中附加文件路径
+
+  # for search
+  # https://fusejs.io/api/options.html
+  fuseOpts:
+    isCaseSensitive: false # 搜索是否区分大小写
+    shouldSort: true # 搜索结果是否排序
+    location: 0 # 搜索位置权重
+    distance: 1000 # 搜索距离权重
+    threshold: 0.4 # 搜索匹配阈值
+    minMatchCharLength: 0 # 最小匹配字符长度
+    limit: 10 # 搜索结果限制
+    keys: ["title", "permalink", "summary", "content"] # 搜索字段
+taxonomies:
+  tag: tags
+  category: categories
+menu:
+  main:
+    - identifier: archives
+      name: 📚 Archives
+      url: /archives/
+      weight: 1
+    - identifier: tags # 菜单标识符
+      name: 🏷️ Tags # 菜单名称
+      url: /tags/ # 菜单链接
+      weight: 2 # 菜单权重
+    - identifier: search
+      name: 🔍 Search
+      url: /search/
+      weight: 3
+    - identifier: about
+      name: 🙋 About me
+      url: /about/
+      weight: 4
+
+# Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
+pygmentsUseClasses: true # 是否使用 Pygments 的 CSS 类
+markup:
+  highlight:
+    noClasses: false # 是否禁用 CSS 类
+    # anchorLineNos: true # 是否启用行号锚点
+    # codeFences: true # 是否启用代码块
+    # guessSyntax: true # 是否启用语法猜测
+    # lineNos: true # 是否显示行号
+    # style: monokai # 代码高亮样式
