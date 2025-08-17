@@ -110,7 +110,7 @@ params:
     hiddenInSingle: false # 是否在单篇文章页面隐藏封面
 
   editPost:
-    URL: "https://github.com/<path_to_repo>/content" # 编辑文章的链接
+    URL: "https://github.com/wanghai673/wanghai673.github.io/tree/main/content" # 编辑文章的链接
     Text: "Suggest Changes" # 编辑按钮文本
     appendFilePath: true # 是否在编辑链接中附加文件路径
 
