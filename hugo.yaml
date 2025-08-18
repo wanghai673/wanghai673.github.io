@@ -21,6 +21,9 @@ minify:
   minifyOutput: true # 是否压缩输出的 HTML 文件
 
 params:
+  discussionTitle: 欢迎来到评论区
+  discussionSubtitle: 感谢您的耐心阅读！来选个表情，或者留个评论吧！
+
   giscus:
     repo: "wanghai673/wanghai673.github.io"
     repoID: "R_kgDOPfU1mg"
@@ -29,8 +32,12 @@ params:
     mapping: "pathname"
     reactionsEnabled: "1"
     emitMetadata: "0"
-    theme: "preferred_color_scheme"
     lang: "zh-CN"
+    inputPosition: "top"
+    lightTheme: "light"
+    darkTheme: "dark"
+    strict: "0"
+
   mainSections: ["posts"]
   env: production # 环境变量，用于启用 Google Analytics、OpenGraph 等功能
   title: Wanghai673 # 网站标题
@@ -49,8 +56,8 @@ params:
   ShowPostNavLinks: true # 是否显示文章导航链接
   ShowBreadCrumbs: true # 是否显示面包屑导航
   ShowCodeCopyButtons: true # 是否显示代码复制按钮
-  ShowWordCount: true # 是否显示字数统计
-  ShowRssButtonInSectionTermList: true # 是否在分类页面显示 RSS 按钮
+  ShowWordCount: false # 是否显示字数统计
+  ShowRssButtonInSectionTermList: false # 是否在分类页面显示 RSS 按钮
   UseHugoToc: true # 是否使用 Hugo 内置的目录功能
   disableSpecial1stPost: false # 是否禁用特殊样式的第一篇文章
   disableScrollToTop: false # 是否禁用返回顶部按钮

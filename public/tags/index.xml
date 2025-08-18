@@ -11,20 +11,34 @@
     </image>
     <generator>Hugo -- 0.148.2</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 17 Aug 2025 14:34:53 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 18 Aug 2025 09:48:24 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>233</title>
-      <link>http://localhost:1313/tags/233/</link>
-      <pubDate>Sun, 17 Aug 2025 14:34:53 +0800</pubDate>
-      <guid>http://localhost:1313/tags/233/</guid>
+      <title>数学</title>
+      <link>http://localhost:1313/tags/%E6%95%B0%E5%AD%A6/</link>
+      <pubDate>Mon, 18 Aug 2025 09:48:24 +0800</pubDate>
+      <guid>http://localhost:1313/tags/%E6%95%B0%E5%AD%A6/</guid>
       <description></description>
     </item>
     <item>
-      <title>编程</title>
-      <link>http://localhost:1313/tags/%E7%BC%96%E7%A8%8B/</link>
+      <title>深度学习</title>
+      <link>http://localhost:1313/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Mon, 18 Aug 2025 09:48:24 +0800</pubDate>
+      <guid>http://localhost:1313/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>知识</title>
+      <link>http://localhost:1313/tags/%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Sun, 17 Aug 2025 14:34:53 +0800</pubDate>
-      <guid>http://localhost:1313/tags/%E7%BC%96%E7%A8%8B/</guid>
+      <guid>http://localhost:1313/tags/%E7%9F%A5%E8%AF%86/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>网站</title>
+      <link>http://localhost:1313/tags/%E7%BD%91%E7%AB%99/</link>
+      <pubDate>Sun, 17 Aug 2025 14:34:53 +0800</pubDate>
+      <guid>http://localhost:1313/tags/%E7%BD%91%E7%AB%99/</guid>
       <description></description>
     </item>
   </channel>

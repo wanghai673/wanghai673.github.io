@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>数学 on Wanghai673</title>
+    <link>http://localhost:1313/tags/%E6%95%B0%E5%AD%A6/</link>
+    <description>Recent content in 数学 on Wanghai673</description>
+    <image>
+      <title>Wanghai673</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.148.2</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 18 Aug 2025 09:48:24 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>神经网络反向传播 数学推导</title>
+      <link>http://localhost:1313/posts/%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/</link>
+      <pubDate>Mon, 18 Aug 2025 09:48:24 +0800</pubDate>
+      <guid>http://localhost:1313/posts/%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/</guid>
+      <description>&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/2.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;最近在重新回顾深度学习相关基础，之前大概过了一遍李沐的动手学深度学习，但很多内容还一知半解，
+感觉网上课程难度曲线还是不太平滑。&lt;/p&gt;
+&lt;p&gt;无意间看到 &lt;a href=&#34;https://www.coursera.org/&#34;&gt;Coursera平台&lt;/a&gt;，在淘宝上花了80买了个半年号，仿佛打开新世界了，第一次看到了原来真的有课程能把深度学习的学习曲线
+弄的这么平滑的，爱了，有点像算法竞赛的acwing、牛客。感觉b站确实不错，但是反馈和互动肯定远远比不上Coursera的。&lt;/p&gt;
+&lt;p&gt;现在刚学完第一门课程，并手动设计并实现了多层卷积神经网络（只用到numpy），在这里记录一下forward/back propagation的数学知识（主要是线性代数）。&lt;/p&gt;
+&lt;h4 id=&#34;正向传播&#34;&gt;正向传播&lt;/h4&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/%281%29.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;非常简单易懂，就是矩阵乘法。&lt;/p&gt;
+&lt;h4 id=&#34;反向传播&#34;&gt;反向传播&lt;/h4&gt;
+&lt;h5 id=&#34;引理一&#34;&gt;引理一&lt;/h5&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/%282%29.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/%283%29.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;搞懂这个引理反向传播就差不多弄懂了，求哪个偏导，固定某行/列值算贡献 就好求了（A固定行，B固定列），因为矩阵乘法是B的列与A的行做点积。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/%284%29.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;以上就是神经网络里的线性代数的一些知识，其实不需要太多基础弄得矩阵乘法，和求导链式法则即可手写神经网络。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
