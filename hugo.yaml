@@ -151,7 +151,7 @@ menu:
     - identifier: archives
       name: 📚 Archives
       url: /archives/
-      weight: 1
+      weight: 5
     - identifier: tags # 菜单标识符
       name: 🏷️ Tags # 菜单名称
       url: /tags/ # 菜单链接
