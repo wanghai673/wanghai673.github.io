@@ -11,8 +11,39 @@
     </image>
     <generator>Hugo -- 0.148.2</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 18 Aug 2025 09:48:24 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 21 Aug 2025 17:07:30 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Softmax的反向传播推导</title>
+      <link>http://localhost:1313/posts/softmax%E7%9A%84%E5%AF%BC%E6%95%B0%E6%8E%A8%E5%AF%BC/</link>
+      <pubDate>Thu, 21 Aug 2025 17:07:30 +0800</pubDate>
+      <guid>http://localhost:1313/posts/softmax%E7%9A%84%E5%AF%BC%E6%95%B0%E6%8E%A8%E5%AF%BC/</guid>
+      <description>&lt;p&gt;softmax是一个经典的多分类概率分布的公式，有n个类，softmax公式如下，
+&lt;/p&gt;
+$$
+\text{softmax}(z)_j = \frac{e^{z_j}}{\sum_{i=1}^n  e^{z_i}}, \quad j = 1, 2, \dots, n
+$$&lt;p&gt;
+首先，考虑一个样本每个类的预测分数做一个softmax，转换成每类预测的概率形式。&lt;/p&gt;
+$$
+a^{[L]} = \text{softmax}(z^{[L]})
+$$$$
+\hat{y} = a^{[L]}\quad
+$$&lt;p&gt;然后，利用样本标签，结合极大似然估计的损失函数如下。
+&lt;/p&gt;
+$$
+L(\hat{y}, y) = - \sum_{i=1}^{n} y_i \log(\hat{y}_i)
+$$&lt;p&gt;由于需要做反向传播，我们想求 $\frac{\partial L}{\partial z^{[L]}}$，也就是做完softmax的前的偏导数。&lt;/p&gt;
+&lt;p&gt;假设 $y$ 的分类为 $1$，则 $y_1 = 1$，其余 $y_j = 0\ (j\neq 1)$，$y=[1,0,.....,0]$
+则有，
+&lt;/p&gt;
+$$
+L(\hat{y}, y) = -\log(\hat{y}_1)
+$$$$
+L(\hat{y}, y) = - \ln \left( \frac{e^{z_1^{[L]}}}{e^{z_1^{[L]}} + e^{z_2^{[L]}} + \cdots + e^{z_n^{[L]}}} \right),
+\quad S = e^{z_1^{[L]}} + e^{z_2^{[L]}} + \cdots + e^{z_n^{[L]}}
+$$&lt;p&gt;接下来求 $Z^{[L]}$ 的偏导，
+&lt;/p&gt;</description>
+    </item>
     <item>
       <title>神经网络反向传播 数学推导</title>
       <link>http://localhost:1313/posts/%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/</link>

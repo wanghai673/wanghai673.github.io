@@ -66,7 +66,7 @@ params:
   hideSummary: false # 是否隐藏文章摘要
   showtoc: false # 是否显示目录
   tocopen: false # 目录是否默认展开
-
+  math: true
   assets:
     # disableHLJS: true # 是否禁用 highlight.js
     # disableFingerprinting: true # 是否禁用资源指纹
@@ -168,6 +168,23 @@ menu:
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true # 是否使用 Pygments 的 CSS 类
 markup:
+  goldmark:
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          block:
+            - - \[
+              - \]
+            - - $$
+              - $$
+          inline:
+            - - \(
+              - \)
+            - - $
+              - $
+    renderer:
+      unsafe: true
   highlight:
     noClasses: false # 是否禁用 CSS 类
     # anchorLineNos: true # 是否启用行号锚点
