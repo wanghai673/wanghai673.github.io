@@ -40,13 +40,13 @@ $$
 接下来求 $Z^{[L]}$ 的偏导，
 $$
 \frac{\partial L}{\partial z^{[L]}_1} 
-= \frac{S}{e^{z^{[L]}_1}} \cdot \frac{e^{z^{[L]}_1} \cdot S - \big(e^{z^{[L]}_1}\big)^2}{S^2} 
+= -\frac{S}{e^{z^{[L]}_1}} \cdot \frac{e^{z^{[L]}_1} \cdot S - \big(e^{z^{[L]}_1}\big)^2}{S^2} 
 = \frac{e^{z^{[L]}_1}}{S} - 1
 $$
 
 $$
 \frac{\partial L}{\partial z^{[L]}_j} 
-= - \frac{S}{e^{z^{[L]}_1}} \cdot \frac{e^{z^{[L]}_1} \cdot e^{z^{[L]}_j}}{S^2} 
+= - \frac{S}{e^{z^{[L]}_1}} \cdot \frac{-e^{z^{[L]}_1} \cdot e^{z^{[L]}_j}}{S^2} 
 = \frac{e^{z^{[L]}_j}}{S}, 
 \quad j \neq 1
 $$
