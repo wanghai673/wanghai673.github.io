@@ -42,7 +42,10 @@ html[data-theme="dark"] header.header :is(.logo a, #menu a):active {
 header.header #menu li { margin: 0 6px; }
 
 /* emoji 与文字（若 emoji 单独用 <span> 包裹） */
-header.header #menu a span { margin-left: 4px; }
+header.header #menu a span { 
+    margin-left: 4px; 
+    font-size: 18px !important; 
+}
 
 /* Logo 图标尺寸（与你的 iconHeight 接近） */
 header.header .logo a img,
