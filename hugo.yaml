@@ -80,9 +80,11 @@ params:
     favicon32x32: "/images/dog.svg" # 32x32 图标
     apple_touch_icon: "/images/dog.svg" # Apple Touch 图标
     safari_pinned_tab: "/images/dog.svg" # Safari 固定标签图标
+    css:
+      - "css/extended/custom.css"
 
   label:
-    text: "Wanghai673" # 标签文本
+    text: "Wanghai673 | 博客" # 标签文本
     icon: /apple-touch-icon.png # 标签图标路径
     iconHeight: 35 # 图标高度
 

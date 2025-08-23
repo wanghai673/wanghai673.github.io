@@ -1,0 +1,98 @@
+/* ===== 顶部导航整体高度 ===== */
+header.header {
+  padding: 10px 0; /* 比默认略小，更紧凑 */
+}
+
+/* ===== 菜单项间距（identifier 之间不要太远） ===== */
+header.header #menu li {
+  margin: 0 6px; /* 默认更大，这里缩小为 6px */
+}
+
+/* ===== 菜单按钮（identifier 链接） ===== */
+header.header #menu a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;          /* 上下 6px，左右 12px：适中尺寸 */
+  line-height: 1.4;           /* 文字不拥挤 */
+  border-radius: 6px;         /* 微圆角 */
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--content) !important; /* 跟随明/暗主题自动变色 */
+  background: transparent;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 悬停与点击（亮色 & 暗色分别处理） */
+header.header #menu a:hover {
+  background: rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+html[data-theme="dark"] header.header #menu a:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+header.header #menu a:active {
+  transform: scale(0.95);
+  background: rgba(0, 0, 0, 0.12);
+}
+html[data-theme="dark"] header.header #menu a:active {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* emoji 与文字间距（如 emoji 单独包在 <span>） */
+header.header #menu a span {
+  margin-left: 4px;
+}
+
+/* ===== 站点 Label（Logo + 文本） ===== */
+header.header .logo a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;                    /* 图标与文字间距 */
+  padding: 4px 10px;           /* 与菜单统一的手感 */
+  line-height: 1.4;            /* 自然行高 */
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--content) !important; /* 跟随明/暗主题 */
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Logo 图标尺寸（与你的 iconHeight 接近，略更紧凑） */
+header.header .logo a img,
+header.header .logo img.logo {
+  height: 32px;                /* 若需严格跟 config，则改为 35px */
+  width: auto;
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+/* Label 悬停与点击（亮色 & 暗色） */
+header.header .logo a:hover {
+  background: rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+html[data-theme="dark"] header.header .logo a:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+header.header .logo a:active {
+  transform: scale(0.96);
+  background: rgba(0, 0, 0, 0.12);
+}
+html[data-theme="dark"] header.header .logo a:active {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* 悬停时轻微放大 Logo 图标 */
+header.header .logo a:hover img {
+  transform: scale(1.05);
+}
+
+/* ===== 菜单容器额外间距归零，避免上下撑高 ===== */
+header.header nav#menu {
+  margin-top: 0;
+  margin-bottom: 0;
+}
