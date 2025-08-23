@@ -1,0 +1,26 @@
+/* 文章卡片基础样式 + 悬停浮起 */
+.post-entry,
+article.post-entry {
+  border-radius: 14px;
+  transition: transform 0.2s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  will-change: transform, box-shadow;
+}
+
+/* 悬停：浮起 + 阴影加强 */
+.post-entry:hover,
+article.post-entry:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 10px 24px rgba(0,0,0,0.12),
+    0 0 0 1px rgba(125,125,125,0.06) inset;
+}
+
+/* 点击：轻微缩小 + 阴影收紧 */
+.post-entry:active,
+article.post-entry:active {
+  transform: scale(0.98);
+  box-shadow:
+    0 6px 14px rgba(0,0,0,0.12),
+    0 0 0 1px rgba(125,125,125,0.05) inset;
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
