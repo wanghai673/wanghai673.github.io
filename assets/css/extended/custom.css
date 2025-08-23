@@ -39,7 +39,7 @@ html[data-theme="dark"] header.header :is(.logo a, #menu a):active {
 }
 
 /* 菜单项间距更紧凑 */
-header.header #menu li { margin: 0 6px; }
+header.header #menu li { margin: 1px; }
 
 /* emoji 与文字（若 emoji 单独用 <span> 包裹） */
 header.header #menu a span { margin-left: 4px; }
