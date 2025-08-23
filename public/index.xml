@@ -110,7 +110,7 @@ $$&lt;p&gt;接下来求 $Z^{[L]}$ 的偏导，
 &lt;p&gt;配置papermod主题，结合大语言模型，想要什么功能直接询问即可，并修改配置文件，主题大部分都是配有相关功能的。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>About me</title>
+      <title>关于</title>
       <link>http://localhost:1313/about/</link>
       <pubDate>Sun, 17 Aug 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/about/</guid>

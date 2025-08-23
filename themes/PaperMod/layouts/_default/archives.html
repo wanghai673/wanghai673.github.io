@@ -35,22 +35,15 @@
 
 {{- range $pages.GroupByPublishDate "2006" }}
 {{- if ne .Key "0001" }}
-<div class="archive-year">
-  {{- $year := replace .Key "0001" "" }}
-  <h2 class="archive-year-header" id="{{ $year }}">
-    <a class="archive-header-link" href="#{{ $year }}">
-      {{- $year -}}
-    </a>
-    <sup class="archive-count">&nbsp;{{ len .Pages }}</sup>
-  </h2>
-  {{- range .Pages.GroupByDate "January" }}
+{{- range .Pages.GroupByDate "2006-01" }}
   <div class="archive-month">
-    <h3 class="archive-month-header" id="{{ $year }}-{{ .Key }}">
-      <a class="archive-header-link" href="#{{ $year }}-{{ .Key }}">
-        {{- .Key -}}
+    <h3 class="archive-month-header" id="{{ .Key }}">
+      <a class="archive-header-link" href="#{{ .Key }}">
+        {{ (index .Pages 0).Date | time.Format "2006年1月" }}
       </a>
       <sup class="archive-count">&nbsp;{{ len .Pages }}</sup>
     </h3>
+
     <div class="archive-posts">
       {{- range .Pages }}
       {{- if eq .Kind "page" }}

@@ -1,5 +1,5 @@
 ---
-title: "About me"
+title: "关于"
 date: 2025-08-17
 draft: false
 # PaperMod 常用参数（可选）

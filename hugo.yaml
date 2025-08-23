@@ -45,13 +45,13 @@ params:
 
   mainSections: ["posts"]
   env: production # 环境变量，用于启用 Google Analytics、OpenGraph 等功能
-  title: Wanghai673 # 网站标题
+  title: Wanghai673 | 博客 # 网站标题
   description: "ExampleSite description" # 网站描述
-  keywords: [Blog, Portfolio, PaperMod] # 网站关键词
+  keywords: [Blog, wanghai673] # 网站关键词
   author: Wanghai673 # 作者名称
   # author: ["Me", "You"] # 多个作者
   images: ["<link or path of image for opengraph, twitter-cards>"] # 用于 OpenGraph 和 Twitter 卡片的图片
-  DateFormat: "January 2, 2006" # 日期格式
+  DateFormat: "2006年01月02日" # 日期格式
   defaultTheme: auto # 默认主题：自动、深色或浅色
   disableThemeToggle: false # 是否禁用主题切换按钮
 
@@ -154,19 +154,19 @@ taxonomies:
 menu:
   main:
     - identifier: archives
-      name: 📚 Archives
+      name: 📚 归档
       url: /archives/
       weight: 5
     - identifier: tags # 菜单标识符
-      name: 🏷️ Tags # 菜单名称
+      name: 🏷️ 标签 # 菜单名称
       url: /tags/ # 菜单链接
       weight: 2 # 菜单权重
     - identifier: search
-      name: 🔍 Search
+      name: 🔍 搜索
       url: /search/
       weight: 3
     - identifier: about
-      name: 🙋 About me
+      name: 🙋 关于
       url: /about/
       weight: 4
 
