@@ -1,0 +1,49 @@
+/* 只在首页生效，定义几个可调变量 */
+body.home {
+  --home-gap: 16px;                 /* 全局基准间距（原建议 12，现在稍微放大） */
+  --home-outer-gap: clamp(10px, 1.6vh, 20px);
+  --home-inner-gap: clamp(8px, 1.2vh, 16px);
+}
+
+/* 首页主容器 — 不要完全贴边，给点呼吸 */
+body.home .main.home {
+  padding-top: var(--home-outer-gap);
+  padding-bottom: var(--home-outer-gap);
+}
+
+/* 只针对 compact 的 home-info：适度留白 */
+.home-info.compact {
+  margin-block: var(--home-outer-gap);
+  padding-block: var(--home-inner-gap);
+}
+
+/* 模块内层：标题 / 内容 / 底部 的分隔感 */
+.home-info.compact .entry-header,
+.home-info.compact .entry-content,
+.home-info.compact .entry-footer {
+  margin-block: calc(var(--home-inner-gap) * 0.6);
+  padding-block: 0; /* 保持干净 */
+}
+
+/* 标题与段落别太挤 */
+.home-info.compact h1 { 
+  margin: 6px 0; 
+  line-height: 1.25;
+}
+.home-info.compact p { 
+  margin: 6px 0; 
+  line-height: 1.6;
+}
+
+/* 如果还保留 first-entry 类，避免其默认的大外边距拉开布局 */
+.first-entry.home-info.compact {
+  margin-block: var(--home-outer-gap);
+}
+
+/* 移动端再宽一点点的间距，防止“糊成一坨” */
+@media (max-width: 640px) {
+  body.home {
+    --home-outer-gap: clamp(12px, 2.2vh, 22px);
+    --home-inner-gap: clamp(10px, 1.8vh, 18px);
+  }
+}

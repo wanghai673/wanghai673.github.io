@@ -1,13 +1,26 @@
-{{- with site.Params.homeInfoParams }}
-<article class="first-entry home-info">
-    <header class="entry-header">
-        <h1>{{ .Title | markdownify }}</h1>
-    </header>
-    <div class="entry-content">
-        {{ .Content | markdownify }}
-    </div>
-    <footer class="entry-footer">
-        {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
-    </footer>
+{{- with site.Params.homeInfoParams -}}
+<article class="home-info compact"
+         style="margin:12px 0; padding:10px 0;">
+  <!-- 整个区块外边距 margin:12px 0 (上下12px，左右0)
+       内边距 padding:10px 0 (上下10px，左右0) -->
+
+  <header class="entry-header"
+          style="margin:10px 0; padding:0;">
+    <!-- 标题区块 -->
+    <h1 style="margin:6px 0;">
+      {{ .Title | markdownify }}
+    </h1>
+  </header>
+
+  <div class="entry-content"
+       style="margin:8px 0; padding:0; font-size:18px; line-height:1.6;">
+    <!-- ↑ 增加 font-size:18px 和行高 line-height -->
+    {{ .Content | markdownify }}
+  </div>
+
+  <footer class="entry-footer"
+          style="margin:8px 0 20px 0; padding:0;">
+    {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
+  </footer>
 </article>
 {{- end -}}

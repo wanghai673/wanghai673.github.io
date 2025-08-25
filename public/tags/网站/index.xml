@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>网站 on Wanghai673 | 博客</title>
-    <link>http://localhost:1313/tags/%E7%BD%91%E7%AB%99/</link>
+    <link>http://localhost:52364/tags/%E7%BD%91%E7%AB%99/</link>
     <description>Recent content in 网站 on Wanghai673 | 博客</description>
     <image>
       <title>Wanghai673 | 博客</title>
-      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>http://localhost:52364/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:52364/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.148.2</generator>
     <language>en</language>
     <lastBuildDate>Sun, 17 Aug 2025 14:34:53 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/%E7%BD%91%E7%AB%99/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:52364/tags/%E7%BD%91%E7%AB%99/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>hugo&#43;papermod博客搭建教程</title>
-      <link>http://localhost:1313/posts/hugo&#43;paermod%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
+      <link>http://localhost:52364/posts/hugo&#43;paermod%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
       <pubDate>Sun, 17 Aug 2025 14:34:53 +0800</pubDate>
-      <guid>http://localhost:1313/posts/hugo&#43;paermod%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
+      <guid>http://localhost:52364/posts/hugo&#43;paermod%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
       <description>&lt;h3 id=&#34;工具介绍&#34;&gt;工具介绍&lt;/h3&gt;
 &lt;h4 id=&#34;hugo&#34;&gt;Hugo&lt;/h4&gt;
 &lt;ul&gt;
