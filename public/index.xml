@@ -2,38 +2,215 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Wanghai673 | 博客</title>
-    <link>http://localhost:52364/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on Wanghai673 | 博客</description>
     <image>
       <title>Wanghai673 | 博客</title>
-      <url>http://localhost:52364/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://localhost:52364/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.148.2</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 25 Aug 2025 15:43:11 +0800</lastBuildDate>
-    <atom:link href="http://localhost:52364/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Aug 2025 22:07:06 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>耶鲁大学幸福科学课程总结</title>
+      <link>http://localhost:1313/posts/the_science_of_well-being_%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Sat, 30 Aug 2025 22:07:06 +0800</pubDate>
+      <guid>http://localhost:1313/posts/the_science_of_well-being_%E6%80%BB%E7%BB%93/</guid>
+      <description>&lt;p&gt;之前看过很多成功学/心理学众所周知的道理，但是都是空头说话，没有任何数据证明，但这门课，能通过实验的方式展示结果，看到了让我更加信服（科学是最大的迷信hhh）。&lt;/p&gt;
+&lt;p&gt;课程纠正了我非常多的偏见，让我对自己有了更清晰的认识，强烈推荐给大家！&lt;/p&gt;
+&lt;p&gt;下面是&lt;a href=&#34;https://www.coursera.org/learn/the-science-of-well-being&#34;&gt;The Science of Well-Being | Coursera&lt;/a&gt;的LLM的总结。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;1-幸福的常见误解&#34;&gt;1. 幸福的常见误解&lt;/h3&gt;
+&lt;h4 id=&#34;11-知道就够了gi-joe-谬误&#34;&gt;1.1 “知道就够了”（G.I. Joe 谬误）&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;仅“知道道理”并不会自动改变行为；需要情境与练习把“知道”变“做到”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;12-找工作与被拒&#34;&gt;1.2 找工作与被拒&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;被拒的痛苦通常没想的那样强与久，心理免疫系统会缓冲。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;13-金钱与收入&#34;&gt;1.3 金钱与收入&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;年轻人的价值观更偏向“高收入为先”。&lt;/li&gt;
+&lt;li&gt;收入增长与主观幸福并非一一对应；整体幸福感在富足年代并未同步上扬。&lt;/li&gt;
+&lt;li&gt;超过某一阈值后，收入主要提升“生活评价”，对日常情绪的边际效用有限。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;14-酷东西与物质主义&#34;&gt;1.4 “酷东西”与物质主义&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;流行文化强化对豪车、名酒等的向往。&lt;/li&gt;
+&lt;li&gt;物质主义目标与更低的长期满意度相关。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;15-真爱与婚姻&#34;&gt;1.5 真爱与婚姻&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;婚后幸福感常在几年内回落到基线（适应效应）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;16-完美身材整形与完美成绩&#34;&gt;1.6 完美身材/整形与完美成绩&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;减重或整形未必带来更好的长期心理健康或幸福。&lt;/li&gt;
+&lt;li&gt;人们普遍高估成绩变化带来的情绪涨落。&lt;/li&gt;
+&lt;li&gt;幸福并非被基因与环境“写死”，相当比例可由行为与思维方式塑造。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;2-我们为什么总是判断失准&#34;&gt;2. 我们为什么总是判断失准&lt;/h3&gt;
+&lt;h4 id=&#34;21-误想miswanting&#34;&gt;2.1 误想（Miswanting）&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;对“未来会多喜欢/多讨厌”经常判断错误。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;22-相对参照点&#34;&gt;2.2 相对参照点&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;我们按比较而非绝对值评估自己：同侪收入、媒体/社交媒体的呈现、班级曲线、外貌对比等都会扭曲感受与选择。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;23-适应力强&#34;&gt;2.3 适应力强&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;对“好事/坏事”都会逐渐习惯：收入提升、中彩票、婚姻等皆会回到常态。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;24-忽视我们会适应&#34;&gt;2.4 忽视我们会适应&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;预测未来情绪时，容易“聚焦于单一事件”并忽略适应与其他生活面向，导致高估负面事件的持续影响。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;3-如何克服偏误可操作策略&#34;&gt;3. 如何克服偏误（可操作策略）&lt;/h3&gt;
+&lt;h4 id=&#34;31-重新定义酷东西投资体验而非物质&#34;&gt;3.1 重新定义“酷东西”：投资体验而非物质&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;把钱与精力优先投入能被分享与反复回味的体验（旅行、学习、共创）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;32-阻断延缓适应&#34;&gt;3.2 阻断/延缓适应&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;品味/回味（savoring）&lt;/strong&gt;：刻意思考并记录正向时刻。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;积极回忆 &amp;amp; 书写消化&lt;/strong&gt;：写下负面事件并完成认知加工。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;负向想象&lt;/strong&gt;：设想“若没有这件好事会怎样”，提升珍惜度。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;时间稀缺&lt;/strong&gt;：把某些体验当作“最后一次”，增强投入。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;感恩练习&lt;/strong&gt;：数祝福、写感谢信、表达谢意。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;重置参照点&lt;/strong&gt;：有意切换比较标准，校准高/低参照引发的偏差。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;打断消费&lt;/strong&gt;：给愉悦体验加入“短暂停”，延长新鲜感。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;4-真正更有效的幸福来源&#34;&gt;4. 真正更有效的幸福来源&lt;/h3&gt;
+&lt;h4 id=&#34;41-更好的想要part-1&#34;&gt;4.1 更好的“想要”（Part 1）&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;优势运用&lt;/strong&gt;：识别并在工作中高频使用个人优势，提升满足与“天职感”。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;心流（Flow）&lt;/strong&gt;：挑战×能力匹配，带来深度专注与高质量体验。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;成长型思维&lt;/strong&gt;：相信能力可发展，更能从挫折中学习与精进。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;42-更好的想要part-2--3&#34;&gt;4.2 更好的“想要”（Part 2 &amp;amp; 3）&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;善意与给予&lt;/strong&gt;：随机善举、为他人花钱、助人使人更幸福（跨文化成立）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;社会连接&lt;/strong&gt;：重视亲密与日常社交；与陌生人开启对话、共享体验。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;时间富足&lt;/strong&gt;：优先时间而非金钱；思考“我如何用时间与人相处？”。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;冥想与正念&lt;/strong&gt;：降低走神、提升幸福、工作记忆与社会连结感。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;健康习惯&lt;/strong&gt;：规律运动与高质量睡眠，稳定情绪与认知表现。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;5-把策略落地从知道到做到&#34;&gt;5. 把策略落地：从“知道”到“做到”&lt;/h3&gt;
+&lt;h4 id=&#34;51-情境支持让好行为更顺手&#34;&gt;5.1 情境支持（让好行为“更顺手”）&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;把诱因放远、把好选择放近：远离随手零食，台面摆水果；为运动与阅读预先布置环境。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;52-目标设定从愿望到执行&#34;&gt;5.2 目标设定（从愿望到执行）&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;具体目标&lt;/strong&gt;：定义清晰的量化标准与截止时间。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;实施意图（If–Then）&lt;/strong&gt;：为关键情境写下触发语句（例：“如果吃完午饭，就散步10分钟”）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;WOOP 技术&lt;/strong&gt;：愿望（Wish）→成果（Outcome）→障碍（Obstacle）→计划（Plan）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;53-速查清单一周可上手&#34;&gt;5.3 速查清单（一周可上手）&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;每周&lt;strong&gt;一次新方式&lt;/strong&gt;运用你的&lt;strong&gt;前五优势&lt;/strong&gt;；在岗尽量覆盖≥4个优势。&lt;/li&gt;
+&lt;li&gt;把&lt;strong&gt;钱&lt;/strong&gt;优先用在&lt;strong&gt;体验/他人&lt;/strong&gt;上；为娱乐安排&lt;strong&gt;小而频繁&lt;/strong&gt;的享受并&lt;strong&gt;刻意中断&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;每日感恩 3 件事&lt;/strong&gt;＋&lt;strong&gt;每周一封感谢讯息&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;正念/慈心冥想&lt;/strong&gt;10–15 分钟，配合&lt;strong&gt;每周≥3次运动&lt;/strong&gt;与&lt;strong&gt;固定就寝/起床&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;社交优先&lt;/strong&gt;：与同事/陌生人开启短聊，把体验与人分享。&lt;/li&gt;
+&lt;li&gt;为关键习惯写 3 条 &lt;strong&gt;If–Then&lt;/strong&gt;，并用 &lt;strong&gt;WOOP&lt;/strong&gt; 复盘障碍与应对。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;6-主要参考&#34;&gt;6. 主要参考&lt;/h3&gt;
+&lt;h4 id=&#34;61-认知与预测偏误&#34;&gt;6.1 认知与预测偏误&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Santos &amp;amp; Gendler (2014). Knowing is half the battle? Edge.&lt;/li&gt;
+&lt;li&gt;Gilbert &amp;amp; Wilson (2000). Miswanting: Some problems in the forecasting of future affective states.&lt;/li&gt;
+&lt;li&gt;Levine et al. (2012). Accuracy and artifact: Reexamining the intensity bias in affective forecasting.&lt;/li&gt;
+&lt;li&gt;Dunn et al. (2002). Location, location, location.&lt;/li&gt;
+&lt;li&gt;Ayton et al. (2007). Affective forecasting: Why can&amp;rsquo;t people predict their emotions?&lt;/li&gt;
+&lt;li&gt;Gilbert et al. (1998). Immune neglect…&lt;/li&gt;
+&lt;li&gt;Gilbert (2007). &lt;em&gt;Stumbling on Happiness&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;62-金钱与价值观&#34;&gt;6.2 金钱与价值观&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Eagan et al. (2015). &lt;em&gt;The American Freshman Survey&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;LinkedIn Survey (2014). What recent grads care the most about.&lt;/li&gt;
+&lt;li&gt;Diener &amp;amp; Oishi (2000). Money and happiness…&lt;/li&gt;
+&lt;li&gt;Myers (2000). &lt;em&gt;The American Paradox&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Lyubomirsky (2007). &lt;em&gt;The How of Happiness&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Kahneman &amp;amp; Deaton (2010). High income improves evaluation of life…&lt;/li&gt;
+&lt;li&gt;New York Times. Economic diversity and student outcomes at Yale University.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;63-参照点与社会比较&#34;&gt;6.3 参照点与社会比较&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Medvec et al. (1995). Olympic medalists &amp;amp; counterfactuals.&lt;/li&gt;
+&lt;li&gt;van Praag &amp;amp; Frijters (1999). Leyden approach.&lt;/li&gt;
+&lt;li&gt;Clark &amp;amp; Oswald (1996). Satisfaction and comparison income.&lt;/li&gt;
+&lt;li&gt;Solnick &amp;amp; Hemenway (1997). Positional concerns.&lt;/li&gt;
+&lt;li&gt;Clark (2003). Unemployment as a social norm.&lt;/li&gt;
+&lt;li&gt;O’Guinn &amp;amp; Shrum (1997). Television &amp;amp; consumer reality.&lt;/li&gt;
+&lt;li&gt;Schor (1999). &lt;em&gt;The Overspent American&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Kuhn et al. (2011). Dutch Postcode Lottery.&lt;/li&gt;
+&lt;li&gt;Kenrick et al. (1989; 1993). Attractiveness &amp;amp; comparison.&lt;/li&gt;
+&lt;li&gt;Vogel et al. (2014). Social media &amp;amp; self-esteem.&lt;/li&gt;
+&lt;li&gt;Burleigh &amp;amp; Meegan (2013). Keeping Up with the Joneses &amp;amp; justice.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;64-适应与物质体验&#34;&gt;6.4 适应与物质/体验&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Brickman et al. (1978). Lottery winners &amp;amp; accident victims.&lt;/li&gt;
+&lt;li&gt;Di Tella et al. (2010). Adaptation to income &amp;amp; status.&lt;/li&gt;
+&lt;li&gt;Lucas et al. (2003). Adaptation to marriage.&lt;/li&gt;
+&lt;li&gt;Boven &amp;amp; Gilovich (2003). To do or to have?&lt;/li&gt;
+&lt;li&gt;Kumar et al. (2014). Anticipatory consumption of experiential purchases.&lt;/li&gt;
+&lt;li&gt;Pchelin &amp;amp; Howell (2014). Hidden cost of value-seeking.&lt;/li&gt;
+&lt;li&gt;Howell &amp;amp; Hill (2009). Mediators of experiential purchases.&lt;/li&gt;
+&lt;li&gt;Nelson &amp;amp; Meyvis (2008). Interrupted consumption.&lt;/li&gt;
+&lt;li&gt;Nelson et al. (2009). Commercial interruptions &amp;amp; TV.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;65-优势心流心态与善意社交时间&#34;&gt;6.5 优势/心流/心态与善意社交时间&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Seligman (2004); Seligman et al. (2005). Signature strengths &amp;amp; interventions.&lt;/li&gt;
+&lt;li&gt;Lavy &amp;amp; Littman-Ovadia (2017); Harzer &amp;amp; Ruch (2012). Strengths at work.&lt;/li&gt;
+&lt;li&gt;Csikszentmihalyi (1992; 2008; 1999). Flow.&lt;/li&gt;
+&lt;li&gt;Deci (1971); Dweck (2007); Grant &amp;amp; Dweck (2003); Blackwell et al. (2007); Mangels et al. (2006). Growth mindset。&lt;/li&gt;
+&lt;li&gt;Otake et al. (2006); Lyubomirsky (2005); Dunn (2014); Dunn et al. (2008); Aknin et al. (2013). Kindness &amp;amp; prosocial spending.&lt;/li&gt;
+&lt;li&gt;Myers (2000); Diener &amp;amp; Seligman (2002); Epley (2014); Epley &amp;amp; Schroeder (2014); Boothby et al. (2014). Social connection.&lt;/li&gt;
+&lt;li&gt;Whillans et al. (2016); Hershfield et al. (2016); Moligner (2010). Time over money.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;66-正念健康与执行&#34;&gt;6.6 正念、健康与执行&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Killingsworth &amp;amp; Gilbert (2010); Mason et al. (2007); Brewer et al. (2011); Fredrickson et al. (2008); Hölzel et al. (2011); Mrazek et al. (2013); Hutcherson et al. (2008). Mind-wandering &amp;amp; meditation.&lt;/li&gt;
+&lt;li&gt;Babyak et al. (2000); Hillman et al. (2008). Exercise &amp;amp; cognition.&lt;/li&gt;
+&lt;li&gt;Dinges et al. (1997); Walker et al. (2002); Wagner et al. (2004); &lt;em&gt;Huffington Post&lt;/em&gt;（睡眠图解）. Sleep &amp;amp; performance.&lt;/li&gt;
+&lt;li&gt;Wansink et al. (2006; 2016). Situation support &amp;amp; default choices.&lt;/li&gt;
+&lt;li&gt;Klein et al. (1990); Gollwitzer &amp;amp; Brandstätter (1997); Stadler &amp;amp; Oettingen (2010); Duckworth et al. (2013); Stadler et al. (2009). 目标与实施意图/WOOP。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>最近在做的一些事</title>
-      <link>http://localhost:52364/posts/%E6%9C%80%E8%BF%91%E5%9C%A8%E5%81%9A%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/</link>
+      <link>http://localhost:1313/posts/%E6%9C%80%E8%BF%91%E5%9C%A8%E5%81%9A%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/</link>
       <pubDate>Mon, 25 Aug 2025 15:43:11 +0800</pubDate>
-      <guid>http://localhost:52364/posts/%E6%9C%80%E8%BF%91%E5%9C%A8%E5%81%9A%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/</guid>
+      <guid>http://localhost:1313/posts/%E6%9C%80%E8%BF%91%E5%9C%A8%E5%81%9A%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/</guid>
       <description>&lt;p&gt;最近都在广泛学习一些有趣的内容，主要是通过coursera平台。在家呆了2个多月了，也不知道未来啥方向，目前也是有些迷茫的状态，还是学些东西充实下自己吧，搜寻一下感兴趣的东东。&lt;/p&gt;
 &lt;p&gt;coursera平台类似于国外的mooc，国内外还有好多这样的平台，如中国大学mooc、bilibili大学、网易云课等等。coursera需要付费会员才能观看课程，而且只能通过国外信用卡付款（无）。于是，我在淘宝一搜，这么多卖号，而且很便宜，86半年，立马充值了一波。&lt;/p&gt;
 &lt;p&gt;有了平台，我立马重新在coursera里，拾起深度学习的基础知识，吴恩达的课程。之前只听过，在coursera认真地观看，还是感觉受益匪浅，毕竟有作业有互动，感觉b站还是差点味道。&lt;/p&gt;
 &lt;p&gt;现在主要看了深度学习专项课程的前3个：&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;233&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:52364/posts/%E6%9C%80%E8%BF%91%E5%9C%A8%E5%81%9A%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/image-20250825155253827.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;233&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/%E6%9C%80%E8%BF%91%E5%9C%A8%E5%81%9A%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/image-20250825155253827.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;其实就相当于复习了一下之前在李沐动手学深度学习的内容。&lt;/p&gt;
 &lt;p&gt;然后光看深度学习也有些乏味，我在网上搜索coursera有没有其他好课程，打开了一个课程排名，类似于垃圾小网站的那种：&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;2333&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:52364/posts/%E6%9C%80%E8%BF%91%E5%9C%A8%E5%81%9A%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/image-20250825155452140.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;2333&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/%E6%9C%80%E8%BF%91%E5%9C%A8%E5%81%9A%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/image-20250825155452140.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;然后最近在看幸福科学，才刚开始看，讲的是如何变得幸福，通过科学的方式，感觉讲的还挺好的，在实验的加持下，科学成为人们可以坚持最大的迷信，hhh，但是还是要有反驳精神，感觉很多科学实验严谨性还是有些欠缺。&lt;/p&gt;
 &lt;p&gt;之后的日子，想了解一下金融相关的知识，挺感兴趣的。马上要开学了，5555，希望能保持学习一些课外内容的习惯。还有，运动也要保持，在家和爸妈打了一个暑假的乒乓球，每日锻炼~&lt;/p&gt;</description>
     </item>
     <item>
       <title>Softmax的反向传播推导</title>
-      <link>http://localhost:52364/posts/softmax%E7%9A%84%E5%AF%BC%E6%95%B0%E6%8E%A8%E5%AF%BC/</link>
+      <link>http://localhost:1313/posts/softmax%E7%9A%84%E5%AF%BC%E6%95%B0%E6%8E%A8%E5%AF%BC/</link>
       <pubDate>Thu, 21 Aug 2025 17:07:30 +0800</pubDate>
-      <guid>http://localhost:52364/posts/softmax%E7%9A%84%E5%AF%BC%E6%95%B0%E6%8E%A8%E5%AF%BC/</guid>
+      <guid>http://localhost:1313/posts/softmax%E7%9A%84%E5%AF%BC%E6%95%B0%E6%8E%A8%E5%AF%BC/</guid>
       <description>&lt;p&gt;softmax是一个经典的多分类概率分布的公式，有n个类，softmax公式如下，
 &lt;/p&gt;
 $$
@@ -62,31 +239,31 @@ $$&lt;p&gt;接下来求 $Z^{[L]}$ 的偏导，
     </item>
     <item>
       <title>神经网络反向传播 数学推导</title>
-      <link>http://localhost:52364/posts/%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/</link>
+      <link>http://localhost:1313/posts/%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/</link>
       <pubDate>Mon, 18 Aug 2025 09:48:24 +0800</pubDate>
-      <guid>http://localhost:52364/posts/%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/</guid>
-      <description>&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:52364/posts/%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/2.png&#34;&gt;&lt;/p&gt;
+      <guid>http://localhost:1313/posts/%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/</guid>
+      <description>&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/2.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;最近在重新回顾深度学习相关基础，之前大概过了一遍李沐的动手学深度学习，但很多内容还一知半解，
 感觉网上课程难度曲线还是不太平滑。&lt;/p&gt;
 &lt;p&gt;无意间看到 &lt;a href=&#34;https://www.coursera.org/&#34;&gt;Coursera平台&lt;/a&gt;，在淘宝上花了80买了个半年号，仿佛打开新世界了，第一次看到了原来真的有课程能把深度学习的学习曲线
 弄的这么平滑的，爱了，有点像算法竞赛的acwing、牛客。感觉b站确实不错，但是反馈和互动肯定远远比不上Coursera的。&lt;/p&gt;
 &lt;p&gt;现在刚学完第一门课程，并手动设计并实现了多层卷积神经网络（只用到numpy），在这里记录一下forward/back propagation的数学知识（主要是线性代数）。&lt;/p&gt;
 &lt;h4 id=&#34;正向传播&#34;&gt;正向传播&lt;/h4&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:52364/posts/%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/%281%29.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/%281%29.jpg&#34;&gt;&lt;/p&gt;
 &lt;p&gt;非常简单易懂，就是矩阵乘法。&lt;/p&gt;
 &lt;h4 id=&#34;反向传播&#34;&gt;反向传播&lt;/h4&gt;
 &lt;h5 id=&#34;引理一&#34;&gt;引理一&lt;/h5&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:52364/posts/%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/%282%29.jpg&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:52364/posts/%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/%283%29.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/%282%29.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/%283%29.jpg&#34;&gt;&lt;/p&gt;
 &lt;p&gt;搞懂这个引理反向传播就差不多弄懂了，求哪个偏导，固定某行/列值算贡献 就好求了（A固定行，B固定列），因为矩阵乘法是B的列与A的行做点积。&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:52364/posts/%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/%284%29.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/%E5%85%A8%E8%BF%9E%E6%8E%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC/%284%29.jpg&#34;&gt;&lt;/p&gt;
 &lt;p&gt;以上就是神经网络里的线性代数的一些知识，其实不需要太多基础弄得矩阵乘法，和求导链式法则即可手写神经网络。&lt;/p&gt;</description>
     </item>
     <item>
       <title>hugo&#43;papermod博客搭建教程</title>
-      <link>http://localhost:52364/posts/hugo&#43;paermod%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
+      <link>http://localhost:1313/posts/hugo&#43;paermod%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
       <pubDate>Sun, 17 Aug 2025 14:34:53 +0800</pubDate>
-      <guid>http://localhost:52364/posts/hugo&#43;paermod%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
+      <guid>http://localhost:1313/posts/hugo&#43;paermod%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
       <description>&lt;h3 id=&#34;工具介绍&#34;&gt;工具介绍&lt;/h3&gt;
 &lt;h4 id=&#34;hugo&#34;&gt;Hugo&lt;/h4&gt;
 &lt;ul&gt;
@@ -127,9 +304,9 @@ $$&lt;p&gt;接下来求 $Z^{[L]}$ 的偏导，
     </item>
     <item>
       <title>关于</title>
-      <link>http://localhost:52364/about/</link>
+      <link>http://localhost:1313/about/</link>
       <pubDate>Sun, 17 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:52364/about/</guid>
+      <guid>http://localhost:1313/about/</guid>
       <description>&lt;p&gt;你好，我是 &lt;strong&gt;wanghai673&lt;/strong&gt;，一名正在攻读 &lt;strong&gt;计算机科学与技术&lt;/strong&gt; 的研究生（研 0），本科毕业于东华大学，目前就读于华东师范大学。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
