@@ -11,8 +11,64 @@
     </image>
     <generator>Hugo -- 0.148.2</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 30 Aug 2025 22:07:06 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 04 Sep 2025 00:46:44 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows语音唤醒助手</title>
+      <link>http://localhost:1313/posts/windows%E8%AF%AD%E9%9F%B3%E5%94%A4%E9%86%92%E5%8A%A9%E6%89%8B/</link>
+      <pubDate>Thu, 04 Sep 2025 00:46:44 +0800</pubDate>
+      <guid>http://localhost:1313/posts/windows%E8%AF%AD%E9%9F%B3%E5%94%A4%E9%86%92%E5%8A%A9%E6%89%8B/</guid>
+      <description>&lt;p&gt;最近闲着无聊随便做了一个&lt;a href=&#34;https://github.com/wanghai673/WinAssistant/&#34;&gt;windows的语音唤醒助手&lt;/a&gt;，主要是闲平常要出门，或者不方便的时候（比如运动、躺床上的时候），可以叫一声电脑就做我想让他做的内容（可以连接LLM/GUI agent/MCP等等）。&lt;/p&gt;
+&lt;p&gt;再加上现在GUIAgent发展的很快，网上还没有语音唤醒形式的链接，也就自己搭了一个出来。&lt;/p&gt;
+&lt;p&gt;下面是这个项目的readme。&lt;/p&gt;
+&lt;h1 id=&#34;winassistant--windows-本地语音唤醒与自动化执行&#34;&gt;WinAssistant – Windows 本地语音唤醒与自动化执行&lt;/h1&gt;
+&lt;p&gt;一个在 &lt;strong&gt;Windows&lt;/strong&gt; 上运行的本地语音助手：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;说出唤醒词 → 识别你的语音 → 自动执行自定义动作（脚本、GUI Agent、MCP 等）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;全离线&lt;/strong&gt;（唤醒+识别均可离线），即插即用，优先使用耳机麦克风。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;演示视频&#34;&gt;演示视频&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/user-attachments/assets/a48b8e94-8b95-46eb-9aa5-a4085c2341c4&#34;&gt;https://github.com/user-attachments/assets/a48b8e94-8b95-46eb-9aa5-a4085c2341c4&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;-核心特性&#34;&gt;✨ 核心特性&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;多唤醒词可选 / 可自定义&lt;/strong&gt;
+内置多种常见唤醒词，也可替换为你训练的 &lt;code&gt;.ppn&lt;/code&gt; 文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;本地唤醒：Picovoice Porcupine&lt;/strong&gt;
+轻量、低延迟、可靠，离线运行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;语音识别：fast-whisper&lt;/strong&gt;
+内置&lt;strong&gt;去噪&lt;/strong&gt;、&lt;strong&gt;VAD 端点检测&lt;/strong&gt;，自动判断“用户是否说完”，可按需调节模型大小（速度/准确度权衡）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;自动音频设备选择&lt;/strong&gt;
+自动选择可用的输入/输出设备，&lt;strong&gt;优先耳机&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;可插拔“处理态”&lt;/strong&gt;
+识别到文本后进入你的“处理态”（可自定义），例如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;调用 MCP / 工具调用&lt;/li&gt;
+&lt;li&gt;触发 GUI Agent&lt;/li&gt;
+&lt;li&gt;执行脚本、打开应用、查询信息等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-工作流--状态机&#34;&gt;🧠 工作流 / 状态机&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;stateDiagram-v2
+    [*] --&amp;gt; 空闲态
+    空闲态 --&amp;gt; 唤醒态: 语音唤醒
+    唤醒态 --&amp;gt; 处理态: 用户语音结束
+    处理态 --&amp;gt; 空闲态
+    唤醒态 --&amp;gt; 空闲态: 用户长时间无应答
+    空闲态 --&amp;gt; 空闲态: （持续监听）
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;说明：唤醒后进入实时听写；若检测到&lt;strong&gt;长时间静音&lt;/strong&gt;则回退到空闲态。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>耶鲁大学幸福科学课程总结</title>
       <link>http://localhost:1313/posts/the_science_of_well-being_%E6%80%BB%E7%BB%93/</link>
