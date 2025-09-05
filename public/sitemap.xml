@@ -17,17 +17,22 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-09-05T13:35:14+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>http://localhost:1313/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</loc>
+    <lastmod>2025-09-05T13:35:14+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url><url>
     <loc>http://localhost:1313/posts/windows%E8%AF%AD%E9%9F%B3%E5%94%A4%E9%86%92%E5%8A%A9%E6%89%8B/</loc>
     <lastmod>2025-09-04T00:46:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url><url>
     <loc>http://localhost:1313/tags/%E6%9D%82%E8%AE%B0/</loc>
-    <lastmod>2025-09-04T00:46:44+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2025-09-04T00:46:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
