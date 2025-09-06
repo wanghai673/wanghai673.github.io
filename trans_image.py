@@ -28,4 +28,4 @@ def trans_image(name):
 
 
 if __name__ == '__main__':
-    trans_image("test")
+    trans_image("9.6_论文阅读")
