@@ -14,8 +14,9 @@ def trans_image(name):
 
     # 复制
     for p in paths:
-        shutil.copy(p, path)
-        print(p)
+        if '\\' in p:
+            shutil.copy(p, path)
+            print("work on: "+p)
 
     # 替换内容
     new_content = re.sub(
@@ -28,4 +29,4 @@ def trans_image(name):
 
 
 if __name__ == '__main__':
-    trans_image("9.6_论文阅读")
+    trans_image("9.7_论文阅读")

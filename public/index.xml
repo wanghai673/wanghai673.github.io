@@ -11,8 +11,48 @@
     </image>
     <generator>Hugo -- 0.148.2</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 06 Sep 2025 12:25:10 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 07 Sep 2025 10:58:46 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>9.7 论文阅读</title>
+      <link>http://localhost:1313/posts/9.7_%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</link>
+      <pubDate>Sun, 07 Sep 2025 10:58:46 +0800</pubDate>
+      <guid>http://localhost:1313/posts/9.7_%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</guid>
+      <description>&lt;h3 id=&#34;self-collaboration-code-generation-via-chatgpt&#34;&gt;Self-collaboration Code Generation via ChatGPT&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;总结&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;2023年的一篇上古论文了（GPT-3.5时代），讲的是如何通过多智能体协作结合软件工程的一些方法论实现代码生成。
+框架中不同智能体是通过prompt驱动的。&lt;/p&gt;
+&lt;p&gt;首先将问题分解为不同stage，如何不同stage通过三个智能体：分析师、代码师、测试师 来解决完成的，如下图所示。&lt;/p&gt;
+&lt;p&gt;然后作者针对框架提出6个不同的RQ(论文标题写错了RQ6写成RQ7了hhh)，并实验分析。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;RQ1: Self-collaboration vs. Baselines&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;RQ2: The Effect of Roles in Self-collaboration&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;RQ3: Self-collaboration on Different LLMs&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;RQ4: The Effect of Interaction&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;RQ5: Analysis for Self-collaboration&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;RQ6: How does self-collaboration work in repository-level software development scenarios and how does it perform?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt=&#34;image-20250907110022476&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/9.7_%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20250907110022476.png&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;chatdev-communicative-agents-for-software-development&#34;&gt;ChatDev: Communicative Agents for Software Development&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;总结&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;好久以前的经典文章了，感觉是上面文章的加强版，也是关于LLM agent实现软件开发的。&lt;/p&gt;
+&lt;p&gt;本文在软件瀑布开发过程的每个phase中引入了讨论的机制，但只有两个agent讨论，一般是instructor和assistant。通过语言交流的过程，将交流过程的批判和分析，作为推理从而生成下一轮的代码，如下图。&lt;/p&gt;
+&lt;p&gt;本文有一个减轻幻觉的机制，就是让assistant与instructor交流过程中主动进入询问环节，提出自己需要的更明确的信息给instrutor，从而缓解instructor提出模糊的需求，从而导致assistant生成内容的幻觉，通过多轮迭代优化代码完整性和准确性。&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;image-20250907172217391&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/9.7_%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20250907172217391.png&#34;&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>9.6 论文阅读</title>
       <link>http://localhost:1313/posts/9.6_%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</link>

@@ -11,8 +11,27 @@
     </image>
     <generator>Hugo -- 0.148.2</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 06 Sep 2025 12:25:10 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 07 Sep 2025 10:58:46 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>9.7 论文阅读</title>
+      <link>http://localhost:1313/posts/9.7_%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</link>
+      <pubDate>Sun, 07 Sep 2025 10:58:46 +0800</pubDate>
+      <guid>http://localhost:1313/posts/9.7_%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</guid>
+      <description>&lt;h3 id=&#34;self-collaboration-code-generation-via-chatgpt&#34;&gt;Self-collaboration Code Generation via ChatGPT&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;总结&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;2023年的一篇上古论文了（GPT-3.5时代），讲的是如何通过多智能体协作结合软件工程的一些方法论实现代码生成。
+框架中不同智能体是通过prompt驱动的。&lt;/p&gt;
+&lt;p&gt;首先将问题分解为不同stage，如何不同stage通过三个智能体：分析师、代码师、测试师 来解决完成的，如下图所示。&lt;/p&gt;
+&lt;p&gt;然后作者针对框架提出6个不同的RQ(论文标题写错了RQ6写成RQ7了hhh)，并实验分析。&lt;/p&gt;
+&lt;p&gt;RQ1: Self-collaboration vs. Baselines&lt;/p&gt;
+&lt;p&gt;RQ2: The Effect of Roles in Self-collaboration&lt;/p&gt;
+&lt;p&gt;RQ3: Self-collaboration on Different LLMs&lt;/p&gt;
+&lt;p&gt;RQ4: The Effect of Interaction&lt;/p&gt;
+&lt;p&gt;RQ5: Analysis for Self-collaboration&lt;/p&gt;
+&lt;p&gt;RQ6: How does self-collaboration work in repository-level software development scenarios and how does it perform?&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;image-20250907110022476&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/9.7_%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20250907110022476.png&#34;&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>9.6 论文阅读</title>
       <link>http://localhost:1313/posts/9.6_%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</link>
@@ -37,18 +56,8 @@
 &lt;p&gt;那有人就会说了，让答错的惩罚提升一些不就行了。确实可以，但是作者回应到现如今大多数的benchmark，只有对/错两个选项，并没有考虑到幻觉的因素，从而导致大家更宁愿LLM猜题，增加一些benchmark的准确率，而不是拒答（大幅度降低幻觉，但准确率会略微降低）。&lt;/p&gt;
 &lt;p&gt;作者呼吁所有benchmark的制作者们，将幻觉这个评价指标加入到benchmark的评测之中，从而抑制LLM的胡言乱语。但现在的benchmark对幻觉的评判往往是特定的一类，大多数benmark没有考虑幻觉因素。&lt;/p&gt;
 &lt;p&gt;上面都是通过后训练降低LLM幻觉的途径，那能不能在预训练的时候降低大语言模型的幻觉呢？作者回答，现在的数据都是无监督的，导致LLM并没有办法对每段数据的真实性做判断，更好的办法还是在后训练的时候减少大模型的幻觉。&lt;/p&gt;
-&lt;p&gt;下面文字是原文的提出的LLM幻觉的一些误解与澄清：&lt;/p&gt;
-&lt;p&gt;我们希望论文中的统计视角能够澄清幻觉（hallucinations）的本质，并纠正一些常见的误解：&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;主张：&lt;/strong&gt; 通过提高准确率可以消除幻觉，因为一个 100% 准确的模型永远不会产生幻觉。
-&lt;strong&gt;发现：&lt;/strong&gt; 准确率永远无法达到 100%，因为无论模型规模、检索能力和推理能力如何，一些现实世界中的问题本质上是无法回答的。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;主张：&lt;/strong&gt; 幻觉是不可避免的。
-&lt;strong&gt;发现：&lt;/strong&gt; 不是的，因为语言模型在不确定时可以选择不作答。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;主张：&lt;/strong&gt; 避免幻觉需要一种只能通过更大模型才能实现的智能水平。
-&lt;strong&gt;发现：&lt;/strong&gt; 小模型有时更容易知道自己的局限。例如，当被问到毛利语问题时，一个完全不懂毛利语的小模型可以直接说“我不知道”；而一个懂一些毛利语的模型则需要判断自己的置信度。正如论文中所讨论的，“校准”所需的计算量远小于“准确”。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;主张：&lt;/strong&gt; 幻觉是现代语言模型中的某种神秘故障。
-&lt;strong&gt;发现：&lt;/strong&gt; 我们理解幻觉产生并在评估中被奖励的统计机制。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;主张：&lt;/strong&gt; 衡量幻觉，只需要一个好的幻觉评测。
-&lt;strong&gt;发现：&lt;/strong&gt; 已经有幻觉评测被发表。然而，一个好的幻觉评测在数百个传统的基于准确率的评测面前几乎无效，因为后者会惩罚谦逊、奖励猜测。因此，所有主要的评测指标都需要重新设计，以奖励表达不确定性的能力。&lt;/p&gt;</description>
+&lt;p&gt;下图是原文的提出的LLM幻觉的一些误解与澄清：&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;image-20250906164329093&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/9.6_%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20250906164329093.png&#34;&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>9.5 论文阅读</title>
