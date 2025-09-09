@@ -9,7 +9,9 @@ tags: ['论文阅读']
 
 **总结**
 
-非常有意思的一篇文章，是前一篇agent进行软件工程的ChetDev的续集。前一篇主要加入instructor和assistant的交流互动，提高软件生成的可行性，这篇注重设计如何提高agent利用历史经验的能力。作者提出，多轮的交流互动记忆系统不一定可能会降低llm生成内容的质量，我们需要提取出能提升的边，并且学习如何在软件开发中走“最短路”。
+非常有意思的一篇文章，是前一篇agent进行软件工程的ChetDev的续集。前一篇主要加入instructor和assistant的交流互动，提高软件生成的可行性，这篇注重设计如何提高agent利用历史经验的能力。
+
+作者提出，多轮的交流互动记忆系统不一定可能会降低llm生成内容的质量，我们需要提取出能提升的边，并且学习如何在软件开发中走“最短路”。
 
 论文学习能力的设计分为三个部分：co-tracking module、co-memorizing module、co-reasoning module
 
@@ -20,3 +22,9 @@ tags: ['论文阅读']
 最后是论文的实验部分，分为Completeness Executability Consistency Quality Duration、胜率测评；定性分析；效率分析；可行性分析；参数敏感性分析（这部分没咋看hhh，但前半部分的原学习框架的设计还是很novel的）
 
 ![image-20250909141850775](image-20250909141850775.png)
+
+---
+
+
+
+马上要开学啦，祝我开学顺利呀呀呀~
