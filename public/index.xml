@@ -11,8 +11,25 @@
     </image>
     <generator>Hugo -- 0.148.2</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 09 Sep 2025 14:15:22 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 13 Sep 2025 19:58:11 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>9.13 论文阅读</title>
+      <link>http://localhost:1313/posts/9.13_%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</link>
+      <pubDate>Sat, 13 Sep 2025 19:58:11 +0800</pubDate>
+      <guid>http://localhost:1313/posts/9.13_%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</guid>
+      <description>&lt;h3 id=&#34;iterative-experience-refinement-of-software-developing-agents&#34;&gt;Iterative Experience Refinement of Software-Developing Agents&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;总结&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;作者迭代式地改善软件开发agents，作者在前一个论文中的提出原学习的方法，也就是记录软件开发中的捷径，但在捷径检索中只是用了简单的语义检索。&lt;/p&gt;
+&lt;p&gt;本文，作者提出保持这些经验的方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;连续更改，每个任务batch中，对前一个batch的经验进行优化&lt;/li&gt;
+&lt;li&gt;总结更改，根据前面所有batch的经验，更新出新的经验&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;最后作者又提出了一个经验elimination，也就是每次保留用得最多的经验，防止检索到无效的内容作为上下文，接着就是实验。&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;image-20250913200502511&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/9.13_%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20250913200502511.png&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;</description>
+    </item>
     <item>
       <title>9.9 论文阅读</title>
       <link>http://localhost:1313/posts/9.9_%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</link>
@@ -20,7 +37,8 @@
       <guid>http://localhost:1313/posts/9.9_%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</guid>
       <description>&lt;h3 id=&#34;experiential-co-learning-of-software-developing-agents&#34;&gt;Experiential Co-Learning of Software-Developing Agents&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;总结&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;非常有意思的一篇文章，是前一篇agent进行软件工程的ChetDev的续集。前一篇主要加入instructor和assistant的交流互动，提高软件生成的可行性，这篇注重设计如何提高agent利用历史经验的能力。作者提出，多轮的交流互动记忆系统不一定可能会降低llm生成内容的质量，我们需要提取出能提升的边，并且学习如何在软件开发中走“最短路”。&lt;/p&gt;
+&lt;p&gt;非常有意思的一篇文章，是前一篇agent进行软件工程的ChetDev的续集。前一篇主要加入instructor和assistant的交流互动，提高软件生成的可行性，这篇注重设计如何提高agent利用历史经验的能力。&lt;/p&gt;
+&lt;p&gt;作者提出，多轮的交流互动记忆系统不一定可能会降低llm生成内容的质量，我们需要提取出能提升的边，并且学习如何在软件开发中走“最短路”。&lt;/p&gt;
 &lt;p&gt;论文学习能力的设计分为三个部分：co-tracking module、co-memorizing module、co-reasoning module&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;co-tracking：作者将历史交流记录抽象为assistant的solution为点，instructor的instruction为边的一条链&lt;/li&gt;
