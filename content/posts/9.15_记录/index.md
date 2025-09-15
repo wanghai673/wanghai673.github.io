@@ -13,7 +13,7 @@ tags: ['记录']
 
 最后完成了Resnet和迁移学习的tensorflow代码实现（简单填空），实现了resnet-50（但我训练过拟合这么快？），有了深度学习框架就是方便~
 
-![image-20250915221235620](C:\Users\11541\AppData\Roaming\Typora\typora-user-images\image-20250915221235620.png)
+![image-20250915221235620](image-20250915221235620.png)
 
 论文只看了个摘要，还是保持下论文阅读的习惯吧，毕竟读论文还挺有趣的（读多了感觉我才能侃侃而谈hhh）
 
