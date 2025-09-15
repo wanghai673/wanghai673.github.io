@@ -29,4 +29,4 @@ def trans_image(name):
 
 
 if __name__ == '__main__':
-    trans_image("9.13_论文阅读")
+    trans_image("9.15_记录")
