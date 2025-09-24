@@ -1,13 +1,11 @@
 ---
-date: '2025-09-24T16:10:02+08:00'
-draft: false
-title: '9.24 记录'
-tags: ['记录']
+date: '2025-09-24T20:34:02+08:00'
+draft: true
+title: '组会展示'
+tags: []
 ---
 
-Coursera上的深度学习课程算是完成了个大概，序列模型里还是学到很多实用的知识，如RNN、GRU、LSTM、Embedding、Attention机制、transformer模型。
-
-下面是**原始RNN**的一些知识点和发展历史：
+Coursera上的深度学习课程算是完成了个大概，序列模型里还是学到很多实用的知识，如RNN、GRU、LSTM、Embedding、Attention机制，下面是一些知识点学习记录。
 
 #### RNN的不同应用
 
@@ -51,10 +49,5 @@ Coursera上的深度学习课程算是完成了个大概，序列模型里还是
 
 之后完成了JAZZ创造的**生成式RNN的作业**：https://www.coursera.org/learn/nlp-sequence-models/programming/ZS7X2/jazz-improvisation-with-lstm/lab
 
-
-
 课程内容都浅显易懂，并且配有作业。在上面的学习，主要深刻意识到了DL是一个很厉害的工具，我们可以用他做很多有意义的事情，并服务人类。而且并没有什么应用难度，人人都可以学习DL这个工具，应用到自己生活中（虽然黑盒，也就因为黑盒，才能超越人类认知）...
 
-后面主要继续深入LLM的学习中，多看一些LLM经典论文，先打好基础，再投入到前沿研究中。
-
-![image-20250924161123376](image-20250924161123376.png)
