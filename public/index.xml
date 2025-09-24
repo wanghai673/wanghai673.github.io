@@ -11,8 +11,41 @@
     </image>
     <generator>Hugo -- 0.148.2</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 15 Sep 2025 22:06:20 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 24 Sep 2025 16:10:02 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>9.24 记录</title>
+      <link>http://localhost:1313/posts/9.24_%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Wed, 24 Sep 2025 16:10:02 +0800</pubDate>
+      <guid>http://localhost:1313/posts/9.24_%E8%AE%B0%E5%BD%95/</guid>
+      <description>&lt;p&gt;Coursera上的深度学习课程算是完成了个大概，序列模型里还是学到很多实用的知识，如RNN、GRU、LSTM、Embedding、Attention机制、transformer模型。&lt;/p&gt;
+&lt;p&gt;卷积模型的最后一章人脸识别暂时没看，主要当时还是想着快点加速自己了解NLP的基础知识的进度，视觉相关的可以后面补充，因为之后论文阅读大概率只和NLP相关。&lt;/p&gt;
+&lt;p&gt;课程内容都浅显易懂，并且配有作业。在上面的学习，主要深刻意识到了DL是一个很厉害的工具，我们可以用他做很多有意义的事情，并服务人类。而且并没有什么应用难度，人人都可以学习DL这个工具，应用到自己生活中（虽然黑盒，也就因为黑盒，才能超越人类认知）&amp;hellip;&lt;/p&gt;
+&lt;p&gt;后面主要继续深入LLM的学习中，多看一些LLM经典论文，先打好基础，再投入到前沿研究中。&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;image-20250924161123376&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/9.24_%E8%AE%B0%E5%BD%95/image-20250924161123376.png&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>9.16 论文阅读</title>
+      <link>http://localhost:1313/posts/9.16_%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</link>
+      <pubDate>Tue, 16 Sep 2025 15:46:03 +0800</pubDate>
+      <guid>http://localhost:1313/posts/9.16_%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</guid>
+      <description>&lt;h3 id=&#34;simulating-human-like-daily-activities-with--desire-driven-autonomy&#34;&gt;SIMULATING HUMAN-LIKE DAILY ACTIVITIES WITH  DESIRE-DRIVEN AUTONOMY&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;总结&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;现在有许多使用大语言模型模拟人类行为的相关论文，使用强化学习训练等方法，但这些方法的大多数只限定为特定场景，无法拓展到人类日常生活中多样变化的场景中。&lt;/p&gt;
+&lt;p&gt;作者引入了欲望驱使的大预言模型agent，来预测模拟人们日常一天生活中的行为，分为了两个模块：环境模拟、欲望驱使agent。&lt;/p&gt;
+&lt;p&gt;环境模拟主要使用了Concordia论文的方法，做了一个日常生活的模拟器。&lt;/p&gt;
+&lt;p&gt;欲望驱使agent更为复杂，其中最重要的部分便是欲望上下文的生成：DESIRE GENERATION，VALUE SYSTEM FOR DESIRE EVALUATION。&lt;/p&gt;
+&lt;p&gt;DESIRE GENERATION：通过预设好的相关标准，将不同形容词的不同程度映射为一个值。&lt;/p&gt;
+&lt;p&gt;VALUE SYSTEM FOR DESIRE EVALUATION分为三部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Quantitative Value Deduction：做选择题，推理出形容词不同值&lt;/li&gt;
+&lt;li&gt;Qualitative Value Description：根据value做出总体描述&lt;/li&gt;
+&lt;li&gt;Value Update：更新值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt=&#34;image-20250916155337729&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/9.16_%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20250916155337729.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;实验没咋看，准备还是看些对模型参数层面修改的论文，如LLM微调、强化学习等的论文。&lt;/p&gt;
+&lt;hr&gt;</description>
+    </item>
     <item>
       <title>9.15 记录</title>
       <link>http://localhost:1313/posts/9.15_%E8%AE%B0%E5%BD%95/</link>
