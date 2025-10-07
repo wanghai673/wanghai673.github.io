@@ -37,4 +37,4 @@ def trans_image(name):
 
 
 if __name__ == '__main__':
-    trans_image("10.9_记录")
+    trans_image("组会展示")

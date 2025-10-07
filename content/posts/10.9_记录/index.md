@@ -1,41 +1,41 @@
 ---
-date: '2025-10-07T19:59:05+08:00'
+date: "2025-10-07T19:59:05+08:00"
 draft: false
-title: '10.9 记录'
-tags: ['记录']
+title: "10.9 记录"
+tags: ["记录"]
 ---
 
-### Transformer架构学习
+### Transformer 架构学习
 
-学习了self-attention、multi-head attention机制，位置编码等，并手动搭建了Transformer架构。并利用Transfomer框架实现了一个[名字实体识别](https://www.coursera.org/learn/nlp-sequence-models/ungradedLab/RdNV9/transformer-network-application-named-entity-recognition/lab)、[问答生成](https://www.coursera.org/learn/nlp-sequence-models/ungradedLab/6iTj6/transformer-network-application-question-answering/lab?path=%2Fnotebooks%2FW4A3_UGL%2FQA_dataset.ipynb)的任务（模型参数没上去，表现不如RNN）。
+学习了 self-attention、multi-head attention 机制，位置编码等，并手动搭建了 Transformer 架构。并利用 Transfomer 框架实现了一个[名字实体识别](https://www.coursera.org/learn/nlp-sequence-models/ungradedLab/RdNV9/transformer-network-application-named-entity-recognition/lab)、[问答生成](https://www.coursera.org/learn/nlp-sequence-models/ungradedLab/6iTj6/transformer-network-application-question-answering/lab?path=%2Fnotebooks%2FW4A3_UGL%2FQA_dataset.ipynb)的任务（模型参数没上去，表现不如 RNN）。
 
 ![3319e3d6922a2e7f2499a3130d3b5925](3319e3d6922a2e7f2499a3130d3b5925.png)
 
-### LLM历史了解
+### LLM 历史了解
 
 **1、GPT, GPT-2, GPT-3**
 
-[GPT，GPT-2，GPT-3 论文精读【论文精读】_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1AF411b7xQ/?spm_id_from=333.1387.search.video_card.click&vd_source=cf35d5107dda9df709c41cc1ec25735f)
+[GPT，GPT-2，GPT-3 论文精读【论文精读】\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1AF411b7xQ/?spm_id_from=333.1387.search.video_card.click&vd_source=cf35d5107dda9df709c41cc1ec25735f)
 
-- GPT：Transformer的Decoder Only的模型始祖
-- GPT-2：加大参数量，并在fewshot领域实现进步，但较同时期Bert进步不明显
-- GPT-3：继续加大参数和数据量，模型能力在微调和fewshot后大大提升
+- GPT：Transformer 的 Decoder Only 的模型始祖
+- GPT-2：加大参数量，并在 fewshot 领域实现进步，但较同时期 Bert 进步不明显
+- GPT-3：继续加大参数和数据量，模型能力在微调和 fewshot 后大大提升
 
 **2、Bert**
 
-[BERT 论文逐段精读【论文精读】_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1PL411M7eQ/?spm_id_from=333.1387.search.video_card.click&vd_source=2205a224ef8d2cd2b3b9cb444289192a)
+[BERT 论文逐段精读【论文精读】\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1PL411M7eQ/?spm_id_from=333.1387.search.video_card.click&vd_source=2205a224ef8d2cd2b3b9cb444289192a)
 
-Encoder Only的模型始祖
+Encoder Only 的模型始祖
 
 **3、Instruct GPT**
 
-[InstructGPT 论文精读【论文精读·48】_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1hd4y187CR/?spm_id_from=333.337.search-card.all.click&vd_source=cf35d5107dda9df709c41cc1ec25735f)
+[InstructGPT 论文精读【论文精读·48】\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1hd4y187CR/?spm_id_from=333.337.search-card.all.click&vd_source=cf35d5107dda9df709c41cc1ec25735f)
 
 RLHF 就是这里来的
 
 **4、GPT-4**
 
-[GPT-4论文精读【论文精读·53】_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1vM4y1U7b5/?spm_id_from=333.1387.search.video_card.click&vd_source=cf35d5107dda9df709c41cc1ec25735f)
+[GPT-4 论文精读【论文精读·53】\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1vM4y1U7b5/?spm_id_from=333.1387.search.video_card.click&vd_source=cf35d5107dda9df709c41cc1ec25735f)
 
 模型能力涌现
 
@@ -43,37 +43,37 @@ RLHF 就是这里来的
 
 经典的开源大模型
 
-[Llama 3.1论文精读 · 1. 导言【论文精读·54】_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1WM4m1y7Uh/?spm_id_from=333.788.videopod.sections&vd_source=cf35d5107dda9df709c41cc1ec25735f)
+[Llama 3.1 论文精读 · 1. 导言【论文精读·54】\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1WM4m1y7Uh/?spm_id_from=333.788.videopod.sections&vd_source=cf35d5107dda9df709c41cc1ec25735f)
 
-### 大模型SFT
+### 大模型 SFT
 
-雷智凯同学总结的文档来学习大模型的SFT微调，一步步的教学transformer库的核心函数是怎么用的，如tokenizer，AutoModelForCausalLM等；手动搭建Dataset。
+雷智凯同学总结的文档来学习大模型的 SFT 微调，一步步的教学 transformer 库的核心函数是怎么用的，如 tokenizer，AutoModelForCausalLM 等；手动搭建 Dataset。
 
-#### **练习**：对病句改错数据集进行SFT微调
+#### **练习**：对病句改错数据集进行 SFT 微调
 
 ### 📘 Few-shot 示例
 
-| 用户输入 (user)                                              | 模型输出 (assistant)                                         |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 全国光伏发电平均利用率达98%，利用水平明显提高。              | 全国光伏发电平均利用率达98%，利用水平明显提高。              |
+| 用户输入 (user)                                                                  | 模型输出 (assistant)                                                           |
+| -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| 全国光伏发电平均利用率达 98%，利用水平明显提高。                                 | 全国光伏发电平均利用率达 98%，利用水平明显提高。                               |
 | #晚安.spuer#希望我们都能在山川尔尔里找到让自己感到快乐还有意义的事，并坚持下去。 | #晚安.spuer#希望我们都能在山川尔里找到让自己感到快乐还有意义的事，并坚持下去。 |
-| 按照定逾期未检验车辆不得上路行驶。                           | 按照规定逾期未检验车辆不得上路行驶。                         |
-| ✨你终回像星星那般发光发亮早安#早安#                          | ✨你总会像星星那般发光发亮早安#早安#                          |
+| 按照定逾期未检验车辆不得上路行驶。                                               | 按照规定逾期未检验车辆不得上路行驶。                                           |
+| ✨ 你终回像星星那般发光发亮早安#早安#                                            | ✨ 你总会像星星那般发光发亮早安#早安#                                          |
 
-------
+---
 
 ### 🔬 LLM Finetune 实验结果表
 
 | ID    | System Prompt | Finetune | Few-shot | Avg. Acc (%) | Pos. Acc (%) | Neg. Acc (%) |
 | ----- | ------------- | -------- | -------- | ------------ | ------------ | ------------ |
-| **6** | ✅             | ✅        | ✅        | **56.02**    | **82.4**     | **30.35**    |
-| **4** | ✅             | ✅        | ❌        | 53.55        | 71.4         | 36.19        |
-| **5** | ✅             | ❌        | ✅        | 9.76         | 16.4         | 3.31         |
-| **2** | ✅             | ❌        | ❌        | 7.30         | 12.20        | 2.53         |
-| **3** | ❌             | ✅        | ❌        | 3.55         | 5.2          | 1.95         |
-| **1** | ❌             | ❌        | ❌        | 0            | 0            | 0            |
+| **6** | ✅            | ✅       | ✅       | **56.02**    | **82.4**     | **30.35**    |
+| **4** | ✅            | ✅       | ❌       | 53.55        | 71.4         | 36.19        |
+| **5** | ✅            | ❌       | ✅       | 9.76         | 16.4         | 3.31         |
+| **2** | ✅            | ❌       | ❌       | 7.30         | 12.20        | 2.53         |
+| **3** | ❌            | ✅       | ❌       | 3.55         | 5.2          | 1.95         |
+| **1** | ❌            | ❌       | ❌       | 0            | 0            | 0            |
 
-------
+---
 
 ### 💡 总结观察
 
@@ -82,11 +82,9 @@ RLHF 就是这里来的
 - 缺少 Finetune 或 Few-shot 时（如 ID 5、2），性能急剧下降。
 - **无任何增强 (ID 1)** 表现最差，验证了各增强手段的重要性。
 
+#### ID 6 微调 checkpoint 下变化
 
-
-#### ID 6 微调checkpoint下变化
-
-![output (4)](output (4).png)
+![output (4)](output_4.png)
 
 这张图展示了 **短训练周期** 下模型在不同 checkpoint 的正样本与负样本准确率变化趋势：
 
@@ -95,9 +93,7 @@ RLHF 就是这里来的
 
 ---
 
-
-
-![output (3)](output (3).png)
+![output (3)](output_3.png)
 
 这张图展示了 **长训练周期** 下模型在不同 checkpoint 的正样本与负样本准确率变化趋势：
 
@@ -106,9 +102,7 @@ RLHF 就是这里来的
 
 ---
 
-
-
-![output (2)](output (2).png)
+![output (2)](output_2.png)
 
 这张图展示了 **不同 checkpoint 下模型的平均准确率变化趋势**：
 
