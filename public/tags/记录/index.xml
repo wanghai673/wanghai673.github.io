@@ -11,15 +11,64 @@
     </image>
     <generator>Hugo -- 0.148.2</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 24 Sep 2025 16:10:02 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 07 Oct 2025 19:59:05 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/%E8%AE%B0%E5%BD%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>10.9 记录</title>
+      <link>http://localhost:1313/posts/10.9_%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Tue, 07 Oct 2025 19:59:05 +0800</pubDate>
+      <guid>http://localhost:1313/posts/10.9_%E8%AE%B0%E5%BD%95/</guid>
+      <description>&lt;h3 id=&#34;transformer架构学习&#34;&gt;Transformer架构学习&lt;/h3&gt;
+&lt;p&gt;学习了self-attention、multi-head attention机制，位置编码等，并手动搭建了Transformer架构。并利用Transfomer框架实现了一个&lt;a href=&#34;https://www.coursera.org/learn/nlp-sequence-models/ungradedLab/RdNV9/transformer-network-application-named-entity-recognition/lab&#34;&gt;名字实体识别&lt;/a&gt;、&lt;a href=&#34;https://www.coursera.org/learn/nlp-sequence-models/ungradedLab/6iTj6/transformer-network-application-question-answering/lab?path=%2Fnotebooks%2FW4A3_UGL%2FQA_dataset.ipynb&#34;&gt;问答生成&lt;/a&gt;的任务（模型参数没上去，表现不如RNN）。&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;在这里插入图片描述&#34; loading=&#34;lazy&#34; src=&#34;https://i-blog.csdnimg.cn/blog_migrate/3319e3d6922a2e7f2499a3130d3b5925.png#pic_center&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;llm历史了解&#34;&gt;LLM历史了解&lt;/h3&gt;
+&lt;p&gt;1、GPT, GPT-2, GPT-3&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV1AF411b7xQ/?spm_id_from=333.1387.search.video_card.click&amp;amp;vd_source=cf35d5107dda9df709c41cc1ec25735f&#34;&gt;GPT，GPT-2，GPT-3 论文精读【论文精读】_哔哩哔哩_bilibili&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GPT：Transformer的Decoder Only的模型始祖&lt;/li&gt;
+&lt;li&gt;GPT-2：加大参数量，并在fewshot领域实现进步，但较同时期Bert进步不明显&lt;/li&gt;
+&lt;li&gt;GPT-3：继续加大参数和数据量，模型能力在微调和fewshot后大大提升&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2、Bert
+Encoder Only的模型始祖&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV1PL411M7eQ/?spm_id_from=333.1387.search.video_card.click&amp;amp;vd_source=2205a224ef8d2cd2b3b9cb444289192a&#34;&gt;BERT 论文逐段精读【论文精读】_哔哩哔哩_bilibili&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;3、Instruct GPT
+RLHF 就是这里来的&lt;/p&gt;
+&lt;p&gt;4、GPT-4&lt;/p&gt;</description>
+    </item>
     <item>
       <title>9.24 记录</title>
       <link>http://localhost:1313/posts/9.24_%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Wed, 24 Sep 2025 16:10:02 +0800</pubDate>
       <guid>http://localhost:1313/posts/9.24_%E8%AE%B0%E5%BD%95/</guid>
       <description>&lt;p&gt;Coursera上的深度学习课程算是完成了个大概，序列模型里还是学到很多实用的知识，如RNN、GRU、LSTM、Embedding、Attention机制、transformer模型。&lt;/p&gt;
-&lt;p&gt;卷积模型的最后一章人脸识别暂时没看，主要当时还是想着快点加速自己了解NLP的基础知识的进度，视觉相关的可以后面补充，因为之后论文阅读大概率只和NLP相关。&lt;/p&gt;
+&lt;p&gt;下面是&lt;strong&gt;原始RNN&lt;/strong&gt;的一些知识点和发展历史：&lt;/p&gt;
+&lt;h4 id=&#34;rnn的不同应用&#34;&gt;RNN的不同应用&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;语音识别&lt;/li&gt;
+&lt;li&gt;音乐生成&lt;/li&gt;
+&lt;li&gt;情感分类&lt;/li&gt;
+&lt;li&gt;DNA序列分析&lt;/li&gt;
+&lt;li&gt;机器翻译&lt;/li&gt;
+&lt;li&gt;视频活动识别&lt;/li&gt;
+&lt;li&gt;命名实体识别&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;rnn的架构类型&#34;&gt;RNN的架构类型&lt;/h4&gt;
+&lt;p&gt;&lt;img alt=&#34;image-20250924203943627&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/9.24_%E8%AE%B0%E5%BD%95/image-20250924203943627.png&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;rnn的生成语言模型-和-采样&#34;&gt;RNN的生成语言模型 和 采样&lt;/h4&gt;
+&lt;p&gt;学习beamsearch算法对模型生产序列进行采样，本质上也是种贪心算法。&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;image-20250924204330436&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/9.24_%E8%AE%B0%E5%BD%95/image-20250924204330436.png&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;引入lstm和gru&#34;&gt;引入LSTM和GRU&lt;/h4&gt;
+&lt;p&gt;传统RNN随着上下文一长，由于模型隐藏层变量大小限制，会丢失掉部分上下文信息。随后，引入了记忆门的装置，能够使得记忆信息直接传递给后续节点。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GRU结构：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;image-20250924204739897&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/9.24_%E8%AE%B0%E5%BD%95/image-20250924204739897.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;LSTM结构：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;image-20250924204817688&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/9.24_%E8%AE%B0%E5%BD%95/image-20250924204817688.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;对于特定问题，如完形填空等，需要不仅前文内容，还需要后文的内容随后，引入&lt;strong&gt;双向RNN&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;image-20250924205008239&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/9.24_%E8%AE%B0%E5%BD%95/image-20250924205008239.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;一个全连接层可能，无法很好提取上下文信息，随后引入&lt;strong&gt;深度RNN&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;image-20250924205134272&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/9.24_%E8%AE%B0%E5%BD%95/image-20250924205134272.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;之后完成了JAZZ创造的&lt;strong&gt;生成式RNN的作业&lt;/strong&gt;：https://www.coursera.org/learn/nlp-sequence-models/programming/ZS7X2/jazz-improvisation-with-lstm/lab&lt;/p&gt;
 &lt;p&gt;课程内容都浅显易懂，并且配有作业。在上面的学习，主要深刻意识到了DL是一个很厉害的工具，我们可以用他做很多有意义的事情，并服务人类。而且并没有什么应用难度，人人都可以学习DL这个工具，应用到自己生活中（虽然黑盒，也就因为黑盒，才能超越人类认知）&amp;hellip;&lt;/p&gt;
 &lt;p&gt;后面主要继续深入LLM的学习中，多看一些LLM经典论文，先打好基础，再投入到前沿研究中。&lt;/p&gt;
 &lt;p&gt;&lt;img alt=&#34;image-20250924161123376&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/9.24_%E8%AE%B0%E5%BD%95/image-20250924161123376.png&#34;&gt;&lt;/p&gt;</description>

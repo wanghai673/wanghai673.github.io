@@ -3,30 +3,38 @@ import re
 import os
 
 
-# 操作变量name
 def trans_image(name):
     path = f'content/posts/{name}'
-    with open(os.path.join(path, "index.md"), "r", encoding="utf-8") as f:
+    index_path = os.path.join(path, "index.md")
+
+    with open(index_path, "r", encoding="utf-8") as f:
         content = f.read()
 
-    # 提取所有路径
-    paths = re.findall(r"!\[.*?\]\((.*?)\)", content)
-
-    # 复制
-    for p in paths:
-        if '\\' in p:
-            shutil.copy(p, path)
-            print("work on: "+p)
-
-    # 替换内容
-    new_content = re.sub(
-        r"!\[(.*?)\]\((.*?)\)",
-        lambda m: f"![{m.group(1)}]({m.group(2).split('\\')[-1].split('/')[-1]})",
-        content
+    pattern = re.compile(
+        r'!\[(.*?)\]\(\s*["\']?(.+?\.(?:png|jpg|jpeg|gif|webp|bmp))["\']?\s*(?:\s+".*?")?\)',
+        re.IGNORECASE
     )
-    with open(os.path.join(path, "index.md"), "w", encoding="utf-8") as f:
+
+    paths = [m.group(2) for m in pattern.finditer(content)]
+
+    for p in paths:
+        if os.path.exists(p):
+            shutil.copy(p, path)
+            print("✅ work on:", p)
+        else:
+            print("⚠️ 文件不存在:", p)
+
+    # 替换路径为文件名
+    new_content = re.sub(
+        r'!\[(.*?)\]\(\s*["\']?(.+?\.(?:png|jpg|jpeg|gif|webp|bmp))["\']?\s*(?:\s+".*?")?\)',
+        lambda m: f"![{m.group(1)}]({os.path.basename(m.group(2))})",
+        content,
+        flags=re.IGNORECASE
+    )
+
+    with open(index_path, "w", encoding="utf-8") as f:
         f.write(new_content)
 
 
 if __name__ == '__main__':
-    trans_image("组会展示")
+    trans_image("10.9_记录")
