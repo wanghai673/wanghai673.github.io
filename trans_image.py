@@ -37,4 +37,4 @@ def trans_image(name):
 
 
 if __name__ == '__main__':
-    trans_image("组会展示")
+    trans_image("verl框架GPRO调参GSM8K")

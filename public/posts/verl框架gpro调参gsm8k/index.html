@@ -1,0 +1,235 @@
+<!doctype html><html lang=en dir=auto><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Verl 框架下 GRPO 调参：GSM8K 实验记录（Qwen3-0.6B） | Wanghai673 | 博客</title><meta name=keywords content="记录"><meta name=description content="背景
+初始Qwen3-0.6B在GSM8K的准确率不到20%，问题主要分为以下两种情况：
+
+未能按照prompt的答案格式 输出 答案
+未能计算出正确答案
+
+经测试主要发现准确率低的原因是主要是前者导致，少部分是后者。本质上就是小模型的指令跟随和推理能力的不足。
+如今LLM已经有大量不同的微调方式，如强化学习微调、SFT等方向，本实验为探索GRPO在LLM微调的效果上限与优势。
+目标
+
+通过 GRPO 微调 Qwen3-0.6B，寻找在 验证集上的最优超参数组合。
+使用 Qwen32B 生成答案进行蒸馏 + LoRA 微调 Qwen3-0.6B，并与 GRPO 方案对比。
+
+方法概览
+
+框架：Verl
+基座模型：Qwen3-0.6B
+优化：GRPO
+对比：Qwen32B 蒸馏 → LoRA on Qwen3-0.6B
+
+调节的超参数
+
+  
+      
+          超参数
+          重要度
+          推荐范围 / 设定
+          当前值
+          影响 / 说明
+      
+  
+  
+      
+          学习率 (LoRA, actor.optim.lr)
+          ⭐⭐⭐⭐⭐
+          1e-5 ～ 5e-5
+          5e-5
+          直接影响收敛与最终性能，建议从小到大网格/二分搜。
+      
+      
+          响应数量 (rollout.n)
+          ⭐⭐⭐⭐
+          5 ～ 16
+          5 / 16
+          更多样本可提升 GRPO 信号质量，但显著增算力。
+      
+      
+          KL 系数 (kl_loss_coef)
+          ⭐⭐⭐⭐
+          1e-4 ～ 1e-2
+          1e-3
+          约束与参考模型偏离度；过大抑制探索、过小易漂移。
+      
+      
+          批次大小
+          ⭐⭐⭐⭐
+          train 64/128/256/512；mini 32/64/128；micro 4/8/16
+          128 / 64 / 16
+          更大批次更稳（受显存限制）。
+      
+      
+          采样温度 (temperature)
+          ⭐⭐
+          0.7 / 1.0 / 1.2
+          1.0
+          多样性与探索；高温度利探索但易噪声。
+      
+      
+          Top-p (top_p)
+          ⭐⭐
+          0.7 / 0.9 / 1.0
+          1.0
+          控制尾部截断；与温度配合调度探索强度。
+      
+  
+
+实验计划
+
+调整verl框架的GRPO的超参数，微调Qwen3-0.6B，探索最大验证集表现的超参数。
+使用Qwen32B模型，蒸馏答案，Lora微调Qwen3-0.6B，并与上面方式对比。
+
+实验过程
+初始实验
+首先在使用LLM生产了一组初始参数，并跑通。"><meta name=author content="Wanghai673"><link rel=canonical href=http://localhost:1313/posts/verl%E6%A1%86%E6%9E%B6gpro%E8%B0%83%E5%8F%82gsm8k/><meta name=google-site-verification content="XYZabc"><meta name=yandex-verification content="XYZabc"><meta name=msvalidate.01 content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.e0ba3545db7c40d4a40a6600ba4c0ca0c92ea8e60a1c1f89a93f15fb7438773c.css integrity="sha256-4Lo1Rdt8QNSkCmYAukwMoMkuqOYKHB+JqT8V+3Q4dzw=" rel="preload stylesheet" as=style><link rel=icon href=http://localhost:1313/images/dog.svg><link rel=icon type=image/png sizes=16x16 href=http://localhost:1313/images/dog.svg><link rel=icon type=image/png sizes=32x32 href=http://localhost:1313/images/dog.svg><link rel=apple-touch-icon href=http://localhost:1313/images/dog.svg><link rel=mask-icon href=http://localhost:1313/images/dog.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=http://localhost:1313/posts/verl%E6%A1%86%E6%9E%B6gpro%E8%B0%83%E5%8F%82gsm8k/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css integrity=sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js integrity=sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js integrity=sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk crossorigin=anonymous onload='window.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}]})})'></script><meta property="og:url" content="http://localhost:1313/posts/verl%E6%A1%86%E6%9E%B6gpro%E8%B0%83%E5%8F%82gsm8k/"><meta property="og:site_name" content="Wanghai673 | 博客"><meta property="og:title" content="Verl 框架下 GRPO 调参：GSM8K 实验记录（Qwen3-0.6B）"><meta property="og:description" content="背景 初始Qwen3-0.6B在GSM8K的准确率不到20%，问题主要分为以下两种情况：
+未能按照prompt的答案格式 输出 答案 未能计算出正确答案 经测试主要发现准确率低的原因是主要是前者导致，少部分是后者。本质上就是小模型的指令跟随和推理能力的不足。
+如今LLM已经有大量不同的微调方式，如强化学习微调、SFT等方向，本实验为探索GRPO在LLM微调的效果上限与优势。
+目标 通过 GRPO 微调 Qwen3-0.6B，寻找在 验证集上的最优超参数组合。 使用 Qwen32B 生成答案进行蒸馏 + LoRA 微调 Qwen3-0.6B，并与 GRPO 方案对比。 方法概览 框架：Verl 基座模型：Qwen3-0.6B 优化：GRPO 对比：Qwen32B 蒸馏 → LoRA on Qwen3-0.6B 调节的超参数 超参数 重要度 推荐范围 / 设定 当前值 影响 / 说明 学习率 (LoRA, actor.optim.lr) ⭐⭐⭐⭐⭐ 1e-5 ～ 5e-5 5e-5 直接影响收敛与最终性能，建议从小到大网格/二分搜。 响应数量 (rollout.n) ⭐⭐⭐⭐ 5 ～ 16 5 / 16 更多样本可提升 GRPO 信号质量，但显著增算力。 KL 系数 (kl_loss_coef) ⭐⭐⭐⭐ 1e-4 ～ 1e-2 1e-3 约束与参考模型偏离度；过大抑制探索、过小易漂移。 批次大小 ⭐⭐⭐⭐ train 64/128/256/512；mini 32/64/128；micro 4/8/16 128 / 64 / 16 更大批次更稳（受显存限制）。 采样温度 (temperature) ⭐⭐ 0.7 / 1.0 / 1.2 1.0 多样性与探索；高温度利探索但易噪声。 Top-p (top_p) ⭐⭐ 0.7 / 0.9 / 1.0 1.0 控制尾部截断；与温度配合调度探索强度。 实验计划 调整verl框架的GRPO的超参数，微调Qwen3-0.6B，探索最大验证集表现的超参数。 使用Qwen32B模型，蒸馏答案，Lora微调Qwen3-0.6B，并与上面方式对比。 实验过程 初始实验 首先在使用LLM生产了一组初始参数，并跑通。"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-10-18T13:17:15+08:00"><meta property="article:modified_time" content="2025-10-18T13:17:15+08:00"><meta property="article:tag" content="记录"><meta property="og:image" content="http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:title content="Verl 框架下 GRPO 调参：GSM8K 实验记录（Qwen3-0.6B）"><meta name=twitter:description content="背景
+初始Qwen3-0.6B在GSM8K的准确率不到20%，问题主要分为以下两种情况：
+
+未能按照prompt的答案格式 输出 答案
+未能计算出正确答案
+
+经测试主要发现准确率低的原因是主要是前者导致，少部分是后者。本质上就是小模型的指令跟随和推理能力的不足。
+如今LLM已经有大量不同的微调方式，如强化学习微调、SFT等方向，本实验为探索GRPO在LLM微调的效果上限与优势。
+目标
+
+通过 GRPO 微调 Qwen3-0.6B，寻找在 验证集上的最优超参数组合。
+使用 Qwen32B 生成答案进行蒸馏 + LoRA 微调 Qwen3-0.6B，并与 GRPO 方案对比。
+
+方法概览
+
+框架：Verl
+基座模型：Qwen3-0.6B
+优化：GRPO
+对比：Qwen32B 蒸馏 → LoRA on Qwen3-0.6B
+
+调节的超参数
+
+  
+      
+          超参数
+          重要度
+          推荐范围 / 设定
+          当前值
+          影响 / 说明
+      
+  
+  
+      
+          学习率 (LoRA, actor.optim.lr)
+          ⭐⭐⭐⭐⭐
+          1e-5 ～ 5e-5
+          5e-5
+          直接影响收敛与最终性能，建议从小到大网格/二分搜。
+      
+      
+          响应数量 (rollout.n)
+          ⭐⭐⭐⭐
+          5 ～ 16
+          5 / 16
+          更多样本可提升 GRPO 信号质量，但显著增算力。
+      
+      
+          KL 系数 (kl_loss_coef)
+          ⭐⭐⭐⭐
+          1e-4 ～ 1e-2
+          1e-3
+          约束与参考模型偏离度；过大抑制探索、过小易漂移。
+      
+      
+          批次大小
+          ⭐⭐⭐⭐
+          train 64/128/256/512；mini 32/64/128；micro 4/8/16
+          128 / 64 / 16
+          更大批次更稳（受显存限制）。
+      
+      
+          采样温度 (temperature)
+          ⭐⭐
+          0.7 / 1.0 / 1.2
+          1.0
+          多样性与探索；高温度利探索但易噪声。
+      
+      
+          Top-p (top_p)
+          ⭐⭐
+          0.7 / 0.9 / 1.0
+          1.0
+          控制尾部截断；与温度配合调度探索强度。
+      
+  
+
+实验计划
+
+调整verl框架的GRPO的超参数，微调Qwen3-0.6B，探索最大验证集表现的超参数。
+使用Qwen32B模型，蒸馏答案，Lora微调Qwen3-0.6B，并与上面方式对比。
+
+实验过程
+初始实验
+首先在使用LLM生产了一组初始参数，并跑通。"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"http://localhost:1313/posts/"},{"@type":"ListItem","position":2,"name":"Verl 框架下 GRPO 调参：GSM8K 实验记录（Qwen3-0.6B）","item":"http://localhost:1313/posts/verl%E6%A1%86%E6%9E%B6gpro%E8%B0%83%E5%8F%82gsm8k/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Verl 框架下 GRPO 调参：GSM8K 实验记录（Qwen3-0.6B）","name":"Verl 框架下 GRPO 调参：GSM8K 实验记录（Qwen3-0.6B）","description":"背景 初始Qwen3-0.6B在GSM8K的准确率不到20%，问题主要分为以下两种情况：\n未能按照prompt的答案格式 输出 答案 未能计算出正确答案 经测试主要发现准确率低的原因是主要是前者导致，少部分是后者。本质上就是小模型的指令跟随和推理能力的不足。\n如今LLM已经有大量不同的微调方式，如强化学习微调、SFT等方向，本实验为探索GRPO在LLM微调的效果上限与优势。\n目标 通过 GRPO 微调 Qwen3-0.6B，寻找在 验证集上的最优超参数组合。 使用 Qwen32B 生成答案进行蒸馏 + LoRA 微调 Qwen3-0.6B，并与 GRPO 方案对比。 方法概览 框架：Verl 基座模型：Qwen3-0.6B 优化：GRPO 对比：Qwen32B 蒸馏 → LoRA on Qwen3-0.6B 调节的超参数 超参数 重要度 推荐范围 / 设定 当前值 影响 / 说明 学习率 (LoRA, actor.optim.lr) ⭐⭐⭐⭐⭐ 1e-5 ～ 5e-5 5e-5 直接影响收敛与最终性能，建议从小到大网格/二分搜。 响应数量 (rollout.n) ⭐⭐⭐⭐ 5 ～ 16 5 / 16 更多样本可提升 GRPO 信号质量，但显著增算力。 KL 系数 (kl_loss_coef) ⭐⭐⭐⭐ 1e-4 ～ 1e-2 1e-3 约束与参考模型偏离度；过大抑制探索、过小易漂移。 批次大小 ⭐⭐⭐⭐ train 64/128/256/512；mini 32/64/128；micro 4/8/16 128 / 64 / 16 更大批次更稳（受显存限制）。 采样温度 (temperature) ⭐⭐ 0.7 / 1.0 / 1.2 1.0 多样性与探索；高温度利探索但易噪声。 Top-p (top_p) ⭐⭐ 0.7 / 0.9 / 1.0 1.0 控制尾部截断；与温度配合调度探索强度。 实验计划 调整verl框架的GRPO的超参数，微调Qwen3-0.6B，探索最大验证集表现的超参数。 使用Qwen32B模型，蒸馏答案，Lora微调Qwen3-0.6B，并与上面方式对比。 实验过程 初始实验 首先在使用LLM生产了一组初始参数，并跑通。\n","keywords":["记录"],"articleBody":"背景 初始Qwen3-0.6B在GSM8K的准确率不到20%，问题主要分为以下两种情况：\n未能按照prompt的答案格式 输出 答案 未能计算出正确答案 经测试主要发现准确率低的原因是主要是前者导致，少部分是后者。本质上就是小模型的指令跟随和推理能力的不足。\n如今LLM已经有大量不同的微调方式，如强化学习微调、SFT等方向，本实验为探索GRPO在LLM微调的效果上限与优势。\n目标 通过 GRPO 微调 Qwen3-0.6B，寻找在 验证集上的最优超参数组合。 使用 Qwen32B 生成答案进行蒸馏 + LoRA 微调 Qwen3-0.6B，并与 GRPO 方案对比。 方法概览 框架：Verl 基座模型：Qwen3-0.6B 优化：GRPO 对比：Qwen32B 蒸馏 → LoRA on Qwen3-0.6B 调节的超参数 超参数 重要度 推荐范围 / 设定 当前值 影响 / 说明 学习率 (LoRA, actor.optim.lr) ⭐⭐⭐⭐⭐ 1e-5 ～ 5e-5 5e-5 直接影响收敛与最终性能，建议从小到大网格/二分搜。 响应数量 (rollout.n) ⭐⭐⭐⭐ 5 ～ 16 5 / 16 更多样本可提升 GRPO 信号质量，但显著增算力。 KL 系数 (kl_loss_coef) ⭐⭐⭐⭐ 1e-4 ～ 1e-2 1e-3 约束与参考模型偏离度；过大抑制探索、过小易漂移。 批次大小 ⭐⭐⭐⭐ train 64/128/256/512；mini 32/64/128；micro 4/8/16 128 / 64 / 16 更大批次更稳（受显存限制）。 采样温度 (temperature) ⭐⭐ 0.7 / 1.0 / 1.2 1.0 多样性与探索；高温度利探索但易噪声。 Top-p (top_p) ⭐⭐ 0.7 / 0.9 / 1.0 1.0 控制尾部截断；与温度配合调度探索强度。 实验计划 调整verl框架的GRPO的超参数，微调Qwen3-0.6B，探索最大验证集表现的超参数。 使用Qwen32B模型，蒸馏答案，Lora微调Qwen3-0.6B，并与上面方式对比。 实验过程 初始实验 首先在使用LLM生产了一组初始参数，并跑通。\n#!/bin/bash set -x cd /mnt/data/home/liuqingshan/wanghai673/RL-test/verl ls MODEL_PATH=/mnt/data/home/liuqingshan/wanghai673/RL-test/models/Qwen3-0.6B python3 -m verl.trainer.main_ppo \\ algorithm.adv_estimator=grpo \\ algorithm.kl_ctrl.kl_coef=0.001 \\ data.train_files=\"${HOME}/data/gsm8k/train.parquet\" \\ data.val_files=\"${HOME}/data/gsm8k/test.parquet\" \\ data.train_batch_size=128 \\ data.max_prompt_length=512 \\ data.max_response_length=512 \\ data.filter_overlong_prompts=True \\ data.truncation=error \\ data.shuffle=False \\ actor_rollout_ref.model.path=\"${MODEL_PATH}\" \\ actor_rollout_ref.model.enable_gradient_checkpointing=True \\ actor_rollout_ref.model.use_remove_padding=False \\ actor_rollout_ref.model.lora_rank=32 \\ actor_rollout_ref.model.lora_alpha=32 \\ actor_rollout_ref.model.target_modules=all-linear \\ actor_rollout_ref.actor.optim.lr=5e-7 \\ actor_rollout_ref.actor.ppo_mini_batch_size=64 \\ actor_rollout_ref.actor.ppo_micro_batch_size_per_gpu=8 \\ actor_rollout_ref.actor.use_kl_loss=True \\ actor_rollout_ref.actor.kl_loss_coef=0.001 \\ actor_rollout_ref.actor.kl_loss_type=low_var_kl \\ actor_rollout_ref.actor.grad_clip=1.0 \\ actor_rollout_ref.actor.entropy_coeff=0.0 \\ actor_rollout_ref.actor.fsdp_config.param_offload=True \\ actor_rollout_ref.actor.fsdp_config.optimizer_offload=True \\ actor_rollout_ref.rollout.name=vllm \\ actor_rollout_ref.rollout.tensor_model_parallel_size=2 \\ actor_rollout_ref.rollout.gpu_memory_utilization=0.6 \\ actor_rollout_ref.rollout.n=5 \\ actor_rollout_ref.rollout.temperature=1.0 \\ actor_rollout_ref.rollout.top_p=1.0 \\ actor_rollout_ref.rollout.top_k=-1 \\ actor_rollout_ref.rollout.enable_chunked_prefill=True \\ actor_rollout_ref.rollout.load_format=safetensors \\ actor_rollout_ref.ref.fsdp_config.param_offload=True \\ trainer.critic_warmup=0 \\ trainer.logger='[\"console\",\"wandb\"]' \\ trainer.project_name=qwen3_grpo_gsm8k \\ trainer.experiment_name=exp_1 \\ trainer.n_gpus_per_node=2 \\ trainer.nnodes=1 \\ trainer.total_epochs=10 \\ trainer.total_training_steps=500 \\ trainer.save_freq=50 \\ trainer.test_freq=10 \\ trainer.default_local_dir=./checkpoints/${trainer.project_name}/${trainer.experiment_name}\\ actor_rollout_ref.rollout.log_prob_micro_batch_size_per_gpu=8 \\ actor_rollout_ref.ref.log_prob_micro_batch_size_per_gpu=8 \\ 2\u003e\u00261 | tee training.log ![W\u0026B Chart 2025_10_21 16_45_06](W\u0026B Chart 2025_10_21 16_45_06.png)\ntotal_training_steps总共训练到了500steps，时间长达10h，为了方便后续实验快速进行，我做出了如下修改：\ntotal_training_steps = 100 gpu_memory_utilization = 0.8 test_freq= 5 ppo_micro_batch_size_per_gpu = 16 这样修改后每个实验大概能在3h左右做完，大大加快了对比的速度。\n对比不同LR下的实验结果 ![W\u0026B Chart 2025_10_21 16_51_21](W\u0026B Chart 2025_10_21 16_51_21.png)\n上面是不同lr在验证集上的表现，观察发现5e6 ~ 5e5之间训练比较稳定，并且效果稳定上升，但大于5e5的学习率出现了明显的抖动， 随后挑选5e5为之后实验的学习率。\n![W\u0026B Chart 2025_10_21 16_54_55](W\u0026B Chart 2025_10_21 16_54_55.png)\n训练集上奖励模型打分与验证集合上呈现一致的趋势，并且不存在太大的过拟合问题，考虑到主要原因是因为epoch跑了不到2个，其实训练集的得分和验证集合基本都是在做新题目。\n![W\u0026B Chart 2025_10_21 16_58_16](W\u0026B Chart 2025_10_21 16_58_16.png)\n学习率越高模型就越偏离最初模型。\n对比不同rollout-n下的实验结果 ![W\u0026B Chart 2025_10_21 17_01_54](W\u0026B Chart 2025_10_21 17_01_54.png)\n实验发现rollout数量增加，能略微提高效果，5-\u003e8-\u003e12训练更加稳定。\n![W\u0026B Chart 2025_10_21 17_07_20](W\u0026B Chart 2025_10_21 17_07_20.png)\nrolloutn越大模型偏离参考模型的程度越小，但效果不会更差，说明随着rolloutn上升训练更加稳定，方差更小。\n对比不同kl系数下的实验结果 ![W\u0026B Chart 2025_10_21 17_11_05](W\u0026B Chart 2025_10_21 17_11_05.png)\n![W\u0026B Chart 2025_10_21 17_12_25](W\u0026B Chart 2025_10_21 17_12_25.png)\nkl系数越到kl_loss显然越小，但根据上面设置kl过大会限制模型更新，过小会使得模型偏离参考模型太大，kl取0.001较为适中。\n对比不同batchsize下的实验结果 序号 train_batch_size ppo_mini_batch_size ppo_micro_batch_size_per_gpu 1 128 32 4 2 256 64 8 3 512 128 16 ![W\u0026B Chart 2025_10_21 17_17_41](W\u0026B Chart 2025_10_21 17_17_41.png)\n![W\u0026B Chart 2025_10_21 17_18_23](W\u0026B Chart 2025_10_21 17_18_23.png)\n在micro_batch不是太小的情况下，训练效果差不多。micro_batch足够大，总steps的一样的情况下，模型效果主要受梯度累积步数，梯度累积步数越小，那么模型更新的次数越多，训练速度和效果也会相应变好。\n","wordCount":"336","inLanguage":"en","image":"http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E","datePublished":"2025-10-18T13:17:15+08:00","dateModified":"2025-10-18T13:17:15+08:00","author":{"@type":"Person","name":"Wanghai673"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:1313/posts/verl%E6%A1%86%E6%9E%B6gpro%E8%B0%83%E5%8F%82gsm8k/"},"publisher":{"@type":"Organization","name":"Wanghai673 | 博客","logo":{"@type":"ImageObject","url":"http://localhost:1313/images/dog.svg"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=http://localhost:1313/ accesskey=h title="Wanghai673 | 博客 (Alt + H)"><img src=http://localhost:1313/apple-touch-icon.png alt aria-label=logo height=35>Wanghai673 | 博客</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=http://localhost:1313/tags/ title="🏷️ 标签"><span>🏷️ 标签</span></a></li><li><a href=http://localhost:1313/search/ title="🔍 搜索 (Alt + /)" accesskey=/><span>🔍 搜索</span></a></li><li><a href=http://localhost:1313/about/ title="🙋 关于"><span>🙋 关于</span></a></li><li><a href=http://localhost:1313/archives/ title="📚 归档"><span>📚 归档</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=http://localhost:1313/>Home</a>&nbsp;»&nbsp;<a href=http://localhost:1313/posts/>Posts</a></div><h1 class="post-title entry-hint-parent">Verl 框架下 GRPO 调参：GSM8K 实验记录（Qwen3-0.6B）</h1><div class=post-meta><span title='2025-10-18 13:17:15 +0800 CST'>2025年10月18日</span>&nbsp;|&nbsp;<a href=https://github.com/wanghai673/wanghai673.github.io/tree/main/content/posts/verl%e6%a1%86%e6%9e%b6GPRO%e8%b0%83%e5%8f%82GSM8K/index.md rel="noopener noreferrer edit" target=_blank>Suggest Changes</a></div></header><div class=post-content><h2 id=背景>背景<a hidden class=anchor aria-hidden=true href=#背景>#</a></h2><p>初始Qwen3-0.6B在GSM8K的准确率不到20%，问题主要分为以下两种情况：</p><ul><li>未能按照prompt的答案格式 输出 答案</li><li>未能计算出正确答案</li></ul><p>经测试主要发现准确率低的原因是主要是前者导致，少部分是后者。本质上就是小模型的指令跟随和推理能力的不足。</p><p>如今LLM已经有大量不同的微调方式，如强化学习微调、SFT等方向，本实验为<strong>探索GRPO在LLM微调的效果上限与优势。</strong></p><h2 id=目标>目标<a hidden class=anchor aria-hidden=true href=#目标>#</a></h2><ul><li>通过 <strong>GRPO</strong> 微调 Qwen3-0.6B，寻找在 <strong>验证集</strong>上的最优超参数组合。</li><li>使用 <strong>Qwen32B 生成答案进行蒸馏</strong> + LoRA 微调 Qwen3-0.6B，并与 GRPO 方案对比。</li></ul><h2 id=方法概览>方法概览<a hidden class=anchor aria-hidden=true href=#方法概览>#</a></h2><ul><li><strong>框架</strong>：Verl</li><li><strong>基座模型</strong>：Qwen3-0.6B</li><li><strong>优化</strong>：GRPO</li><li><strong>对比</strong>：Qwen32B 蒸馏 → LoRA on Qwen3-0.6B</li></ul><h2 id=调节的超参数>调节的超参数<a hidden class=anchor aria-hidden=true href=#调节的超参数>#</a></h2><table><thead><tr><th>超参数</th><th>重要度</th><th>推荐范围 / 设定</th><th>当前值</th><th>影响 / 说明</th></tr></thead><tbody><tr><td>学习率 (LoRA, <code>actor.optim.lr</code>)</td><td>⭐⭐⭐⭐⭐</td><td>1e-5 ～ 5e-5</td><td><strong>5e-5</strong></td><td>直接影响收敛与最终性能，建议从小到大网格/二分搜。</td></tr><tr><td>响应数量 (<code>rollout.n</code>)</td><td>⭐⭐⭐⭐</td><td>5 ～ 16</td><td><strong>5 / 16</strong></td><td>更多样本可提升 GRPO 信号质量，但显著增算力。</td></tr><tr><td>KL 系数 (<code>kl_loss_coef</code>)</td><td>⭐⭐⭐⭐</td><td>1e-4 ～ 1e-2</td><td><strong>1e-3</strong></td><td>约束与参考模型偏离度；过大抑制探索、过小易漂移。</td></tr><tr><td>批次大小</td><td>⭐⭐⭐⭐</td><td>train 64/128/256/512；mini 32/64/128；micro 4/8/16</td><td><strong>128 / 64 / 16</strong></td><td>更大批次更稳（受显存限制）。</td></tr><tr><td>采样温度 (<code>temperature</code>)</td><td>⭐⭐</td><td>0.7 / 1.0 / 1.2</td><td><strong>1.0</strong></td><td>多样性与探索；高温度利探索但易噪声。</td></tr><tr><td>Top-p (<code>top_p</code>)</td><td>⭐⭐</td><td>0.7 / 0.9 / 1.0</td><td><strong>1.0</strong></td><td>控制尾部截断；与温度配合调度探索强度。</td></tr></tbody></table><h2 id=实验计划>实验计划<a hidden class=anchor aria-hidden=true href=#实验计划>#</a></h2><ol><li>调整verl框架的GRPO的超参数，微调Qwen3-0.6B，探索最大验证集表现的超参数。</li><li>使用Qwen32B模型，蒸馏答案，Lora微调Qwen3-0.6B，并与上面方式对比。</li></ol><h2 id=实验过程>实验过程<a hidden class=anchor aria-hidden=true href=#实验过程>#</a></h2><h4 id=初始实验>初始实验<a hidden class=anchor aria-hidden=true href=#初始实验>#</a></h4><p>首先在使用LLM生产了一组初始参数，并跑通。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=cp>#!/bin/bash  
+</span></span></span><span class=line><span class=cl><span class=cp></span><span class=nb>set</span> -x  
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl><span class=nb>cd</span> /mnt/data/home/liuqingshan/wanghai673/RL-test/verl  
+</span></span><span class=line><span class=cl>ls
+</span></span><span class=line><span class=cl><span class=nv>MODEL_PATH</span><span class=o>=</span>/mnt/data/home/liuqingshan/wanghai673/RL-test/models/Qwen3-0.6B
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>python3 -m verl.trainer.main_ppo <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  algorithm.adv_estimator<span class=o>=</span>grpo <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  algorithm.kl_ctrl.kl_coef<span class=o>=</span>0.001 <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  data.train_files<span class=o>=</span><span class=s2>&#34;</span><span class=si>${</span><span class=nv>HOME</span><span class=si>}</span><span class=s2>/data/gsm8k/train.parquet&#34;</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  data.val_files<span class=o>=</span><span class=s2>&#34;</span><span class=si>${</span><span class=nv>HOME</span><span class=si>}</span><span class=s2>/data/gsm8k/test.parquet&#34;</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  data.train_batch_size<span class=o>=</span><span class=m>128</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  data.max_prompt_length<span class=o>=</span><span class=m>512</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  data.max_response_length<span class=o>=</span><span class=m>512</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  data.filter_overlong_prompts<span class=o>=</span>True <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  data.truncation<span class=o>=</span>error <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  data.shuffle<span class=o>=</span>False <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.model.path<span class=o>=</span><span class=s2>&#34;</span><span class=si>${</span><span class=nv>MODEL_PATH</span><span class=si>}</span><span class=s2>&#34;</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.model.enable_gradient_checkpointing<span class=o>=</span>True <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.model.use_remove_padding<span class=o>=</span>False <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.model.lora_rank<span class=o>=</span><span class=m>32</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.model.lora_alpha<span class=o>=</span><span class=m>32</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.model.target_modules<span class=o>=</span>all-linear <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.actor.optim.lr<span class=o>=</span>5e-7 <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.actor.ppo_mini_batch_size<span class=o>=</span><span class=m>64</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.actor.ppo_micro_batch_size_per_gpu<span class=o>=</span><span class=m>8</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.actor.use_kl_loss<span class=o>=</span>True <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.actor.kl_loss_coef<span class=o>=</span>0.001 <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.actor.kl_loss_type<span class=o>=</span>low_var_kl <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.actor.grad_clip<span class=o>=</span>1.0 <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.actor.entropy_coeff<span class=o>=</span>0.0 <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.actor.fsdp_config.param_offload<span class=o>=</span>True <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.actor.fsdp_config.optimizer_offload<span class=o>=</span>True <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.rollout.name<span class=o>=</span>vllm <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.rollout.tensor_model_parallel_size<span class=o>=</span><span class=m>2</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.rollout.gpu_memory_utilization<span class=o>=</span>0.6 <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.rollout.n<span class=o>=</span><span class=m>5</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.rollout.temperature<span class=o>=</span>1.0 <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.rollout.top_p<span class=o>=</span>1.0 <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.rollout.top_k<span class=o>=</span>-1 <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.rollout.enable_chunked_prefill<span class=o>=</span>True <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.rollout.load_format<span class=o>=</span>safetensors <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.ref.fsdp_config.param_offload<span class=o>=</span>True <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  trainer.critic_warmup<span class=o>=</span><span class=m>0</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  trainer.logger<span class=o>=</span><span class=s1>&#39;[&#34;console&#34;,&#34;wandb&#34;]&#39;</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  trainer.project_name<span class=o>=</span>qwen3_grpo_gsm8k <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  trainer.experiment_name<span class=o>=</span>exp_1 <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  trainer.n_gpus_per_node<span class=o>=</span><span class=m>2</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  trainer.nnodes<span class=o>=</span><span class=m>1</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  trainer.total_epochs<span class=o>=</span><span class=m>10</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  trainer.total_training_steps<span class=o>=</span><span class=m>500</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  trainer.save_freq<span class=o>=</span><span class=m>50</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  trainer.test_freq<span class=o>=</span><span class=m>10</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  trainer.default_local_dir<span class=o>=</span>./checkpoints/<span class=si>${</span><span class=nv>trainer</span><span class=p>.project_name</span><span class=si>}</span>/<span class=si>${</span><span class=nv>trainer</span><span class=p>.experiment_name</span><span class=si>}</span><span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.rollout.log_prob_micro_batch_size_per_gpu<span class=o>=</span><span class=m>8</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  actor_rollout_ref.ref.log_prob_micro_batch_size_per_gpu<span class=o>=</span><span class=m>8</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>  2&gt;<span class=p>&amp;</span><span class=m>1</span> <span class=p>|</span> tee training.log
+</span></span></code></pre></div><p>![W&amp;B Chart 2025_10_21 16_45_06](W&amp;B Chart 2025_10_21 16_45_06.png)</p><p>total_training_steps总共训练到了500steps，时间长达10h，为了方便后续实验快速进行，我做出了如下修改：</p><ul><li>total_training_steps = 100</li><li>gpu_memory_utilization = 0.8</li><li>test_freq= 5</li><li>ppo_micro_batch_size_per_gpu = 16</li></ul><p>这样修改后每个实验大概能在3h左右做完，大大加快了对比的速度。</p><hr><h4 id=对比不同lr下的实验结果>对比不同LR下的实验结果<a hidden class=anchor aria-hidden=true href=#对比不同lr下的实验结果>#</a></h4><p>![W&amp;B Chart 2025_10_21 16_51_21](W&amp;B Chart 2025_10_21 16_51_21.png)</p><p>上面是不同lr在验证集上的表现，观察发现5e6 ~ 5e5之间训练比较稳定，并且效果稳定上升，但大于5e5的学习率出现了明显的抖动，
+随后挑选5e5为之后实验的学习率。</p><p>![W&amp;B Chart 2025_10_21 16_54_55](W&amp;B Chart 2025_10_21 16_54_55.png)</p><p>训练集上奖励模型打分与验证集合上呈现一致的趋势，并且不存在太大的过拟合问题，考虑到主要原因是因为epoch跑了不到2个，其实训练集的得分和验证集合基本都是在做新题目。</p><p>![W&amp;B Chart 2025_10_21 16_58_16](W&amp;B Chart 2025_10_21 16_58_16.png)</p><p>学习率越高模型就越偏离最初模型。</p><hr><h4 id=对比不同rollout-n下的实验结果>对比不同rollout-n下的实验结果<a hidden class=anchor aria-hidden=true href=#对比不同rollout-n下的实验结果>#</a></h4><p>![W&amp;B Chart 2025_10_21 17_01_54](W&amp;B Chart 2025_10_21 17_01_54.png)</p><p><img alt=image-20251021170334915 loading=lazy src=/posts/verl%E6%A1%86%E6%9E%B6gpro%E8%B0%83%E5%8F%82gsm8k/image-20251021170334915.png></p><p>实验发现rollout数量增加，能略微提高效果，5->8->12训练更加稳定。</p><p>![W&amp;B Chart 2025_10_21 17_07_20](W&amp;B Chart 2025_10_21 17_07_20.png)</p><p>rolloutn越大模型偏离参考模型的程度越小，但效果不会更差，说明随着rolloutn上升训练更加稳定，方差更小。</p><hr><h4 id=对比不同kl系数下的实验结果>对比不同kl系数下的实验结果<a hidden class=anchor aria-hidden=true href=#对比不同kl系数下的实验结果>#</a></h4><p>![W&amp;B Chart 2025_10_21 17_11_05](W&amp;B Chart 2025_10_21 17_11_05.png)</p><p>![W&amp;B Chart 2025_10_21 17_12_25](W&amp;B Chart 2025_10_21 17_12_25.png)</p><p>kl系数越到kl_loss显然越小，但根据上面设置kl过大会限制模型更新，过小会使得模型偏离参考模型太大，kl取0.001较为适中。</p><hr><h4 id=对比不同batchsize下的实验结果>对比不同batchsize下的实验结果<a hidden class=anchor aria-hidden=true href=#对比不同batchsize下的实验结果>#</a></h4><table><thead><tr><th>序号</th><th>train_batch_size</th><th>ppo_mini_batch_size</th><th>ppo_micro_batch_size_per_gpu</th></tr></thead><tbody><tr><td>1</td><td>128</td><td>32</td><td>4</td></tr><tr><td>2</td><td>256</td><td>64</td><td>8</td></tr><tr><td>3</td><td>512</td><td>128</td><td>16</td></tr></tbody></table><p>![W&amp;B Chart 2025_10_21 17_17_41](W&amp;B Chart 2025_10_21 17_17_41.png)</p><p>![W&amp;B Chart 2025_10_21 17_18_23](W&amp;B Chart 2025_10_21 17_18_23.png)</p><p>在micro_batch不是太小的情况下，训练效果差不多。micro_batch足够大，总steps的一样的情况下，模型效果主要受梯度累积步数，梯度累积步数越小，那么模型更新的次数越多，训练速度和效果也会相应变好。</p></div><footer class=post-footer><ul class=post-tags><li><a href=http://localhost:1313/tags/%E8%AE%B0%E5%BD%95/>记录</a></li></ul><nav class=paginav><a class=next href=http://localhost:1313/posts/10.9_%E8%AE%B0%E5%BD%95/><span class=title>Next »</span><br><span>10.9 记录</span></a></nav></footer><div class=comments-title id=tw-comment-title><p class=x-comments-title>欢迎来到评论区</p><p style=font-size:1rem>感谢您的耐心阅读！来选个表情，或者留个评论吧！</p></div><div id=tw-comment></div><script>const getStoredTheme=()=>localStorage.getItem("pref-theme")==="dark"?"dark":"light",setGiscusTheme=()=>{const e=e=>{const t=document.querySelector("iframe.giscus-frame");t&&t.contentWindow.postMessage({giscus:e},"https://giscus.app")};e({setConfig:{theme:getStoredTheme()}})};document.addEventListener("DOMContentLoaded",()=>{const s={src:"https://giscus.app/client.js","data-repo":"wanghai673/wanghai673.github.io","data-repo-id":"R_kgDOPfU1mg","data-category":"Announcements","data-category-id":"DIC_kwDOPfU1ms4CuRXc","data-mapping":"pathname","data-strict":"0","data-reactions-enabled":"1","data-emit-metadata":"0","data-input-position":"top","data-theme":getStoredTheme(),"data-lang":"zh-CN","data-loading":"lazy",crossorigin:"anonymous",async:""},e=document.createElement("script");Object.entries(s).forEach(([t,n])=>e.setAttribute(t,n)),document.querySelector("#tw-comment").appendChild(e);const t=document.querySelector("#theme-toggle");t&&t.addEventListener("click",setGiscusTheme);const n=document.querySelector("#theme-toggle-float");n&&n.addEventListener("click",setGiscusTheme)})</script></article></main><footer class=footer><span>&copy; 2025 <a href=http://localhost:1313/>Wanghai673 | 博客</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>

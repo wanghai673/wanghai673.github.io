@@ -11,39 +11,60 @@
     </image>
     <generator>Hugo -- 0.148.2</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 07 Oct 2025 19:59:05 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 18 Oct 2025 13:17:15 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Verl框架GPRO调参GSM8K</title>
+      <link>http://localhost:1313/posts/verl%E6%A1%86%E6%9E%B6gpro%E8%B0%83%E5%8F%82gsm8k/</link>
+      <pubDate>Sat, 18 Oct 2025 13:17:15 +0800</pubDate>
+      <guid>http://localhost:1313/posts/verl%E6%A1%86%E6%9E%B6gpro%E8%B0%83%E5%8F%82gsm8k/</guid>
+      <description>&lt;h2 id=&#34;实验背景&#34;&gt;实验背景&lt;/h2&gt;
+&lt;p&gt;初始Qwen3-0.6B在GSM8K的准确率不到20%，问题主要分为以下两种情况：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;未能按照prompt的答案格式 输出 答案&lt;/li&gt;
+&lt;li&gt;未能计算出正确答案&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;经测试主要发现准确率低的原因是主要是前者导致，少部分是后者。&lt;/p&gt;
+&lt;p&gt;现准备使用不同的微调方法实现准确率的提升，并探索不同超参数对实验结果的影响。&lt;/p&gt;
+&lt;h2 id=&#34;实验目标&#34;&gt;实验目标&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;调整verl框架的GRPO的超参数，微调Qwen3-0.6B，探索最大验证集表现的超参数。&lt;/li&gt;
+&lt;li&gt;使用Qwen32B模型，蒸馏答案，Lora微调Qwen3-0.6B。&lt;/li&gt;
+&lt;li&gt;对比不同方式的区别&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;实验过程&#34;&gt;实验过程&lt;/h2&gt;</description>
+    </item>
     <item>
       <title>10.9 记录</title>
       <link>http://localhost:1313/posts/10.9_%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Tue, 07 Oct 2025 19:59:05 +0800</pubDate>
       <guid>http://localhost:1313/posts/10.9_%E8%AE%B0%E5%BD%95/</guid>
-      <description>&lt;h3 id=&#34;transformer架构学习&#34;&gt;Transformer架构学习&lt;/h3&gt;
-&lt;p&gt;学习了self-attention、multi-head attention机制，位置编码等，并手动搭建了Transformer架构。并利用Transfomer框架实现了一个&lt;a href=&#34;https://www.coursera.org/learn/nlp-sequence-models/ungradedLab/RdNV9/transformer-network-application-named-entity-recognition/lab&#34;&gt;名字实体识别&lt;/a&gt;、&lt;a href=&#34;https://www.coursera.org/learn/nlp-sequence-models/ungradedLab/6iTj6/transformer-network-application-question-answering/lab?path=%2Fnotebooks%2FW4A3_UGL%2FQA_dataset.ipynb&#34;&gt;问答生成&lt;/a&gt;的任务（模型参数没上去，表现不如RNN）。&lt;/p&gt;
+      <description>&lt;h3 id=&#34;transformer-架构学习&#34;&gt;Transformer 架构学习&lt;/h3&gt;
+&lt;p&gt;学习了 self-attention、multi-head attention 机制，位置编码等，并手动搭建了 Transformer 架构。并利用 Transfomer 框架实现了一个&lt;a href=&#34;https://www.coursera.org/learn/nlp-sequence-models/ungradedLab/RdNV9/transformer-network-application-named-entity-recognition/lab&#34;&gt;名字实体识别&lt;/a&gt;、&lt;a href=&#34;https://www.coursera.org/learn/nlp-sequence-models/ungradedLab/6iTj6/transformer-network-application-question-answering/lab?path=%2Fnotebooks%2FW4A3_UGL%2FQA_dataset.ipynb&#34;&gt;问答生成&lt;/a&gt;的任务（模型参数没上去，表现不如 RNN）。&lt;/p&gt;
 &lt;p&gt;&lt;img alt=&#34;3319e3d6922a2e7f2499a3130d3b5925&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/10.9_%E8%AE%B0%E5%BD%95/3319e3d6922a2e7f2499a3130d3b5925.png&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;llm历史了解&#34;&gt;LLM历史了解&lt;/h3&gt;
+&lt;h3 id=&#34;llm-历史了解&#34;&gt;LLM 历史了解&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;1、GPT, GPT-2, GPT-3&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV1AF411b7xQ/?spm_id_from=333.1387.search.video_card.click&amp;amp;vd_source=cf35d5107dda9df709c41cc1ec25735f&#34;&gt;GPT，GPT-2，GPT-3 论文精读【论文精读】_哔哩哔哩_bilibili&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;GPT：Transformer的Decoder Only的模型始祖&lt;/li&gt;
-&lt;li&gt;GPT-2：加大参数量，并在fewshot领域实现进步，但较同时期Bert进步不明显&lt;/li&gt;
-&lt;li&gt;GPT-3：继续加大参数和数据量，模型能力在微调和fewshot后大大提升&lt;/li&gt;
+&lt;li&gt;GPT：Transformer 的 Decoder Only 的模型始祖&lt;/li&gt;
+&lt;li&gt;GPT-2：加大参数量，并在 fewshot 领域实现进步，但较同时期 Bert 进步不明显&lt;/li&gt;
+&lt;li&gt;GPT-3：继续加大参数和数据量，模型能力在微调和 fewshot 后大大提升&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;2、Bert&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV1PL411M7eQ/?spm_id_from=333.1387.search.video_card.click&amp;amp;vd_source=2205a224ef8d2cd2b3b9cb444289192a&#34;&gt;BERT 论文逐段精读【论文精读】_哔哩哔哩_bilibili&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Encoder Only的模型始祖&lt;/p&gt;
+&lt;p&gt;Encoder Only 的模型始祖&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;3、Instruct GPT&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV1hd4y187CR/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=cf35d5107dda9df709c41cc1ec25735f&#34;&gt;InstructGPT 论文精读【论文精读·48】_哔哩哔哩_bilibili&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;RLHF 就是这里来的&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;4、GPT-4&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV1vM4y1U7b5/?spm_id_from=333.1387.search.video_card.click&amp;amp;vd_source=cf35d5107dda9df709c41cc1ec25735f&#34;&gt;GPT-4论文精读【论文精读·53】_哔哩哔哩_bilibili&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV1vM4y1U7b5/?spm_id_from=333.1387.search.video_card.click&amp;amp;vd_source=cf35d5107dda9df709c41cc1ec25735f&#34;&gt;GPT-4 论文精读【论文精读·53】_哔哩哔哩_bilibili&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;模型能力涌现&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;5、Llama 3.1&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;经典的开源大模型&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV1WM4m1y7Uh/?spm_id_from=333.788.videopod.sections&amp;amp;vd_source=cf35d5107dda9df709c41cc1ec25735f&#34;&gt;Llama 3.1论文精读 · 1. 导言【论文精读·54】_哔哩哔哩_bilibili&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;大模型sft&#34;&gt;大模型SFT&lt;/h3&gt;
-&lt;p&gt;雷智凯同学总结的文档来学习大模型的SFT微调，一步步的教学transformer库的核心函数是怎么用的，如tokenizer，AutoModelForCausalLM等；手动搭建Dataset。&lt;/p&gt;
-&lt;h4 id=&#34;练习对病句改错数据集进行sft微调&#34;&gt;&lt;strong&gt;练习&lt;/strong&gt;：对病句改错数据集进行SFT微调&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV1WM4m1y7Uh/?spm_id_from=333.788.videopod.sections&amp;amp;vd_source=cf35d5107dda9df709c41cc1ec25735f&#34;&gt;Llama 3.1 论文精读 · 1. 导言【论文精读·54】_哔哩哔哩_bilibili&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;大模型-sft&#34;&gt;大模型 SFT&lt;/h3&gt;
+&lt;p&gt;雷智凯同学总结的文档来学习大模型的 SFT 微调，一步步的教学 transformer 库的核心函数是怎么用的，如 tokenizer，AutoModelForCausalLM 等；手动搭建 Dataset。&lt;/p&gt;
+&lt;h4 id=&#34;练习对病句改错数据集进行-sft-微调&#34;&gt;&lt;strong&gt;练习&lt;/strong&gt;：对病句改错数据集进行 SFT 微调&lt;/h4&gt;
 &lt;h3 id=&#34;-few-shot-示例&#34;&gt;📘 Few-shot 示例&lt;/h3&gt;
 &lt;table&gt;
   &lt;thead&gt;
@@ -54,8 +75,8 @@
   &lt;/thead&gt;
   &lt;tbody&gt;
       &lt;tr&gt;
-          &lt;td&gt;全国光伏发电平均利用率达98%，利用水平明显提高。&lt;/td&gt;
-          &lt;td&gt;全国光伏发电平均利用率达98%，利用水平明显提高。&lt;/td&gt;
+          &lt;td&gt;全国光伏发电平均利用率达 98%，利用水平明显提高。&lt;/td&gt;
+          &lt;td&gt;全国光伏发电平均利用率达 98%，利用水平明显提高。&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;#晚安.spuer#希望我们都能在山川尔尔里找到让自己感到快乐还有意义的事，并坚持下去。&lt;/td&gt;
@@ -66,8 +87,8 @@
           &lt;td&gt;按照规定逾期未检验车辆不得上路行驶。&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
-          &lt;td&gt;✨你终回像星星那般发光发亮早安#早安#&lt;/td&gt;
-          &lt;td&gt;✨你总会像星星那般发光发亮早安#早安#&lt;/td&gt;
+          &lt;td&gt;✨ 你终回像星星那般发光发亮早安#早安#&lt;/td&gt;
+          &lt;td&gt;✨ 你总会像星星那般发光发亮早安#早安#&lt;/td&gt;
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -150,11 +171,11 @@
 &lt;li&gt;缺少 Finetune 或 Few-shot 时（如 ID 5、2），性能急剧下降。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;无任何增强 (ID 1)&lt;/strong&gt; 表现最差，验证了各增强手段的重要性。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;id-6-微调checkpoint下变化&#34;&gt;ID 6 微调checkpoint下变化&lt;/h4&gt;
-&lt;p&gt;![output (4)](output (4).png)&lt;/p&gt;</description>
+&lt;h4 id=&#34;id-6-微调-checkpoint-下变化&#34;&gt;ID 6 微调 checkpoint 下变化&lt;/h4&gt;
+&lt;p&gt;&lt;img alt=&#34;output (4)&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/10.9_%E8%AE%B0%E5%BD%95/output_4.png&#34;&gt;&lt;/p&gt;</description>
     </item>
     <item>
-      <title>10.9 记录</title>
+      <title>组会展示</title>
       <link>http://localhost:1313/posts/%E7%BB%84%E4%BC%9A%E5%B1%95%E7%A4%BA/</link>
       <pubDate>Tue, 07 Oct 2025 19:59:05 +0800</pubDate>
       <guid>http://localhost:1313/posts/%E7%BB%84%E4%BC%9A%E5%B1%95%E7%A4%BA/</guid>
