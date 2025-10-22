@@ -14,25 +14,94 @@
     <lastBuildDate>Sat, 18 Oct 2025 13:17:15 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Verl框架GPRO调参GSM8K</title>
+      <title>Verl 框架下 GRPO 调参：GSM8K 实验记录（Qwen3-0.6B）</title>
       <link>http://localhost:1313/posts/verl%E6%A1%86%E6%9E%B6gpro%E8%B0%83%E5%8F%82gsm8k/</link>
       <pubDate>Sat, 18 Oct 2025 13:17:15 +0800</pubDate>
       <guid>http://localhost:1313/posts/verl%E6%A1%86%E6%9E%B6gpro%E8%B0%83%E5%8F%82gsm8k/</guid>
-      <description>&lt;h2 id=&#34;实验背景&#34;&gt;实验背景&lt;/h2&gt;
+      <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
 &lt;p&gt;初始Qwen3-0.6B在GSM8K的准确率不到20%，问题主要分为以下两种情况：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;未能按照prompt的答案格式 输出 答案&lt;/li&gt;
 &lt;li&gt;未能计算出正确答案&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;经测试主要发现准确率低的原因是主要是前者导致，少部分是后者。&lt;/p&gt;
-&lt;p&gt;现准备使用不同的微调方法实现准确率的提升，并探索不同超参数对实验结果的影响。&lt;/p&gt;
-&lt;h2 id=&#34;实验目标&#34;&gt;实验目标&lt;/h2&gt;
+&lt;p&gt;经测试主要发现准确率低的原因是主要是前者导致，少部分是后者。本质上就是小模型的指令跟随和推理能力的不足。&lt;/p&gt;
+&lt;p&gt;如今LLM已经有大量不同的微调方式，如强化学习微调、SFT等方向，本实验为&lt;strong&gt;探索GRPO在LLM微调的效果上限与优势。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;目标&#34;&gt;目标&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;通过 &lt;strong&gt;GRPO&lt;/strong&gt; 微调 Qwen3-0.6B，寻找在 &lt;strong&gt;验证集&lt;/strong&gt;上的最优超参数组合。&lt;/li&gt;
+&lt;li&gt;使用 &lt;strong&gt;Qwen32B 生成答案进行蒸馏&lt;/strong&gt; + LoRA 微调 Qwen3-0.6B，并与 GRPO 方案对比。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;方法概览&#34;&gt;方法概览&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;框架&lt;/strong&gt;：Verl&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;基座模型&lt;/strong&gt;：Qwen3-0.6B&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优化&lt;/strong&gt;：GRPO&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;对比&lt;/strong&gt;：Qwen32B 蒸馏 → LoRA on Qwen3-0.6B&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;调节的超参数&#34;&gt;调节的超参数&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;超参数&lt;/th&gt;
+          &lt;th&gt;重要度&lt;/th&gt;
+          &lt;th&gt;推荐范围 / 设定&lt;/th&gt;
+          &lt;th&gt;当前值&lt;/th&gt;
+          &lt;th&gt;影响 / 说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;学习率 (LoRA, &lt;code&gt;actor.optim.lr&lt;/code&gt;)&lt;/td&gt;
+          &lt;td&gt;⭐⭐⭐⭐⭐&lt;/td&gt;
+          &lt;td&gt;1e-5 ～ 5e-5&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;5e-5&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;直接影响收敛与最终性能，建议从小到大网格/二分搜。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;响应数量 (&lt;code&gt;rollout.n&lt;/code&gt;)&lt;/td&gt;
+          &lt;td&gt;⭐⭐⭐⭐&lt;/td&gt;
+          &lt;td&gt;5 ～ 16&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;5 / 16&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;更多样本可提升 GRPO 信号质量，但显著增算力。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;KL 系数 (&lt;code&gt;kl_loss_coef&lt;/code&gt;)&lt;/td&gt;
+          &lt;td&gt;⭐⭐⭐⭐&lt;/td&gt;
+          &lt;td&gt;1e-4 ～ 1e-2&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;1e-3&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;约束与参考模型偏离度；过大抑制探索、过小易漂移。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;批次大小&lt;/td&gt;
+          &lt;td&gt;⭐⭐⭐⭐&lt;/td&gt;
+          &lt;td&gt;train 64/128/256/512；mini 32/64/128；micro 4/8/16&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;128 / 64 / 16&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;更大批次更稳（受显存限制）。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;采样温度 (&lt;code&gt;temperature&lt;/code&gt;)&lt;/td&gt;
+          &lt;td&gt;⭐⭐&lt;/td&gt;
+          &lt;td&gt;0.7 / 1.0 / 1.2&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;1.0&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;多样性与探索；高温度利探索但易噪声。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Top-p (&lt;code&gt;top_p&lt;/code&gt;)&lt;/td&gt;
+          &lt;td&gt;⭐⭐&lt;/td&gt;
+          &lt;td&gt;0.7 / 0.9 / 1.0&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;1.0&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;控制尾部截断；与温度配合调度探索强度。&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;实验计划&#34;&gt;实验计划&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;调整verl框架的GRPO的超参数，微调Qwen3-0.6B，探索最大验证集表现的超参数。&lt;/li&gt;
-&lt;li&gt;使用Qwen32B模型，蒸馏答案，Lora微调Qwen3-0.6B。&lt;/li&gt;
-&lt;li&gt;对比不同方式的区别&lt;/li&gt;
+&lt;li&gt;使用Qwen32B模型，蒸馏答案，Lora微调Qwen3-0.6B，并与上面方式对比。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;实验过程&#34;&gt;实验过程&lt;/h2&gt;</description>
+&lt;h2 id=&#34;实验过程&#34;&gt;实验过程&lt;/h2&gt;
+&lt;h4 id=&#34;初始实验&#34;&gt;初始实验&lt;/h4&gt;
+&lt;p&gt;首先在使用LLM生产了一组初始参数，并跑通。&lt;/p&gt;</description>
     </item>
     <item>
       <title>10.9 记录</title>
